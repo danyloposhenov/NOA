@@ -4,18 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-// import { MatDialogModule } from '@angular/material/dialog';
-// import { MatFormFieldModule } from '@angular/material/form-field';
-// import { MatInputModule } from '@angular/material/input';
-// import { MatButtonModule } from '@angular/material/button';
-//
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
-// const MATERIAL = [
-//   MatDialogModule,
-//   MatFormFieldModule,
-//   MatInputModule,
-//   MatButtonModule
-// ]
+
+const MATERIAL = [
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule
+]
 
 
 @NgModule({
@@ -23,13 +23,13 @@ import { HttpClientModule } from '@angular/common/http';
 
   ],
   imports: [
-    // ...MATERIAL,
+    ...MATERIAL,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
   exports: [
-    // ...MATERIAL,
+    ...MATERIAL,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
