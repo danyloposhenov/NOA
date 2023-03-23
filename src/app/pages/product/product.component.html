@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="title">
+    <h2 class="title__text">{{ titleName }}</h2>
+  </div>
+  <section class="menu">
+    <ng-container *ngIf="menu">
+      <ul class="list" >
+        <li class="list__item active">
+          <a>Всі</a>
+        </li>
+        <li class="list__item">
+          <a>Філадельфія</a>
+        </li>
+        <li class="list__item">
+          <a>Каліфорнія</a>
+        </li>
+        <li class="list__item">
+          <a>Запечені</a>
+        </li>
+        <li class="list__item">
+          <a>Фірмові</a>
+        </li>
+        <li class="list__item">
+          <a>Преміум</a>
+        </li>
+        <li class="list__item">
+          <a>Макі</a>
+        </li>
+      </ul>
+    </ng-container>
+    <ul class="product">
+      <li class="product-item" *ngFor="let product of userProducts">
+        <div class="product-item__image">
+          <a>
+            <img [routerLink]="[ '/product/'+product.category.path, product.id]" [src]="product.imagePath">
+          </a>
+        </div>
+        <h3 class="product-item__title">
+          <a [routerLink]="[ '/product/'+product.category.path, product.id]"> {{ product.name }} </a>
+        </h3>
+        <div class="product-item__desc">
+          <p> {{ product.description }} </p>
+          <div> {{ product.weight }} </div>
+        </div>
+        <div class="product-item__controls">
+          <p> {{ product.price }} грн</p>
+          <div class="product-item__controls-count">
+            <button (click)="productCount(product, false)" type="button">-</button>
+            <input type="text" [value]="product.count">
+            <button (click)="productCount(product, true)" type="button">+</button>
+          </div>
+          <button class="product-item__controls-order" (click)="addToBasket(product)">замовити</button>
+        </div>
+      </li>
+    </ul>
+  </section>
+</div>

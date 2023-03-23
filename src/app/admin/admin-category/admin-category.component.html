@@ -1,0 +1,58 @@
+<div class="container">
+  <button id="add" (click)="openList()">Додати категорію</button>
+  <ng-container *ngIf="list">
+    <div class="list">
+      <table class="table">
+        <thead class="table-header">
+          <tr>
+            <th>№</th>
+            <th>Назва</th>
+            <th>Шлях</th>
+            <th>Картинка</th>
+            <th>Дії</th>
+          </tr>
+        </thead>
+        <tbody class="table-content">
+          <tr *ngFor="let category of adminCategories">
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td>{{ category.path }}</td>
+            <td>
+              <div>
+                <img [src]="category.imagePath" alt="">
+              </div>
+            </td>
+            <td>
+              <button type="button" id="edit" (click)="editCategory(category)">Редагувати</button>
+              <button type="button" id="delete" (click)="deleteCategory(category)">Видалити</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!list">
+    <form [formGroup]="categoryForm" (submit)="addCategory()">
+      <div class="forms">
+        <div class="forms__input">
+          <input formControlName="name" placeholder="*Назва">
+          <input formControlName="path" type="text" placeholder="*Шлях">
+        </div>
+        <ng-container *ngIf="!isUploaded">
+          <div class="forms__file">
+            <input class="form-control" type="file" (change)="upload($event)">
+          </div>
+        </ng-container>
+        <ng-container *ngIf="isUploaded">
+          <div class="forms-download">
+            <div class="forms-download__image">
+              <img [src]="valueByControl('imagePath')" alt="">
+            </div>
+            <button type="button" class="forms-download__btn" (click)="deleteImage()">Delete</button>
+          </div>
+        </ng-container>
+        <button type="submit" id="save" [disabled]="categoryForm.invalid">Зберегти</button>
+      </div>
+    </form>
+  </ng-container>
+</div>

@@ -1,0 +1,115 @@
+<div class="container">
+  <a class="logo" [routerLink]="[ '' ]" routerLinkActive="route-active">
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/monosushi-6a750.appspot.com/o/static%2Flogo.svg?alt=media&token=8fe3025d-2bf8-46f8-8418-6b65af9ed95a"
+      alt="" class="logo__icon">
+  </a>
+  <nav class="menu">
+    <ul class="menu-list">
+      <li class="menu-list__item">
+        <a [routerLink]="[ '/discount' ]" routerLinkActive="route-active">
+          <div>
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/monosushi-6a750.appspot.com/o/static%2Fgift.svg?alt=media&token=26d8d073-2cde-4bc6-8d2d-6ce7b3779cd0"
+              alt="">
+            <span>Акції</span>
+          </div>
+        </a>
+      </li>
+      <li class="menu-list__item">
+        <a [routerLink]="[ '/product/rolls' ]" routerLinkActive="route-active">
+          <div>
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/monosushi-6a750.appspot.com/o/static%2Frolls.svg?alt=media&token=e6dfba57-5e1a-41cf-962d-aec1cf772d41"
+              alt="">
+            <span>Роли</span>
+          </div>
+        </a>
+      </li>
+      <li class="menu-list__item">
+        <a [routerLink]="[ '/product/sets' ]" routerLinkActive="route-active">
+          <div>
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/monosushi-6a750.appspot.com/o/static%2Fsets.svg?alt=media&token=8180c0dc-56b9-4e7b-9e37-b9c3617975b1"
+              alt="">
+            <span>Cети</span>
+          </div>
+        </a>
+      </li>
+      <li class="menu-list__item">
+        <a [routerLink]="[ '/product/drinks' ]" routerLinkActive="route-active">
+          <div>
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/monosushi-6a750.appspot.com/o/static%2Fdrinks.svg?alt=media&token=788650af-b51d-4fa0-82db-4d973b0920f6"
+              alt="">
+            <span>Напої</span>
+          </div>
+        </a>
+      </li>
+      <li class="menu-list__item">
+        <a [routerLink]="[ '/product/sauces' ]" routerLinkActive="route-active">
+          <div>
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/monosushi-6a750.appspot.com/o/static%2Fsauce.svg?alt=media&token=30a4ee73-cbbd-4902-b684-27f255443a95"
+              alt="">
+            <span>Соуси</span>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="burger">
+    <ng-container *ngIf="!burgerList">
+      <button type="button" class="burger__btn" (click)="menu()">
+        <img src="../../../assets/bars.svg" alt="">
+      </button>
+    </ng-container>
+    <ng-container *ngIf="burgerList">
+      <button class="burger__btn" (click)="menu()">
+        <img src="../../../assets/multiply.svg" alt="">
+      </button>
+      <ul class="burger__list">
+        <li>
+          <a (click)="menu()" [routerLink]="[ '/delivery' ]" routerLinkActive="route-active">Доставка та оплата</a>
+        </li>
+        <li>
+          <a (click)="menu()" [routerLink]="[ '/about' ]" routerLinkActive="route-active">Про нас</a>
+        </li>
+        <li>
+          <a (click)="menu()" [routerLink]="[ '/discount' ]" routerLinkActive="route-active">Акції</a>
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+  <button class="callback" (click)="openCallbackDialog()">
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/monosushi-6a750.appspot.com/o/static%2Fphone.svg?alt=media&token=8c2ccadb-f793-41fe-bfed-6f271ee2b7e5"
+      alt="">
+    <span>Ми зателефонуємо</span>
+  </button>
+  <div class="contact">
+    <a class="contact__phone" href="tel:0978780837">(097) 878 08 37</a>
+    <p class="contact__info">Працюємо з <span>11:00</span> до <span>23:59</span></p>
+  </div>
+  <div class="admin">
+    <ng-container *ngIf="!isLogin">
+      <a (click)="openLoginDialog()">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/monosushi-6a750.appspot.com/o/static%2Fuser.svg?alt=media&token=9ac122e9-dc2d-4e0e-b9e9-ed9fa0451fdc"
+          alt="">
+      </a>
+    </ng-container>
+    <ng-container *ngIf="isLogin">
+      <a [routerLink]="[ '/'+loginUrl ]" routerLinkActive="route-active"> {{ loginPage }} </a>
+    </ng-container>
+  </div>
+  <div class="checkout">
+    <a>
+      <img
+        (click)="openBasketDialog()"
+        src="https://firebasestorage.googleapis.com/v0/b/monosushi-6a750.appspot.com/o/static%2Fbasket.svg?alt=media&token=6d3fba7c-19c1-4cb9-ade5-e8ee440f2d80"
+        alt="">
+      <span> {{ amountProducts }} </span>
+    </a>
+    <p> {{ total }} грн</p>
+</div>

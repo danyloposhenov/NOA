@@ -1,0 +1,42 @@
+<div class="modal">
+  <div class="modal-info">
+    <ng-container *ngIf="!openModalOrder">
+      <div class="modal-info-empty">
+        <div>
+          <img src="https://firebasestorage.googleapis.com/v0/b/monosushi-6a750.appspot.com/o/static%2Fcart-empty-img.svg?alt=media&token=395d7fb5-9eb4-4881-a00e-c8f3273bd847" alt="">
+        </div>
+        <h3>Кошик порожній</h3>
+        <a [routerLink]="[ '' ]" mat-dialog-close>перейти до каталогу</a>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="openModalOrder">
+      <ul>
+        <li class="modal-info-product" *ngFor="let product of basket">
+          <div class="modal-info-product__image">
+            <img [src]="product.imagePath" alt="">
+          </div>
+          <div class="modal-info-product__name">{{ product.name }}</div>
+          <div class="modal-info-product__controls">
+            <button (click)="productCount(product, false)" type="button">-</button>
+            <input type="text" [value]="product.count">
+            <button (click)="productCount(product, true)" type="button">+</button>
+          </div>
+          <div class="modal-info-product__total">
+            <span> {{ product.price * product.count }} </span>грн
+          </div>
+          <div class="modal-info-product__delete">
+            <img (click)="deleteFromBasket(product)"
+              src="https://firebasestorage.googleapis.com/v0/b/monosushi-6a750.appspot.com/o/static%2Ftrash-alt.svg?alt=media&token=13668282-6f0d-46bd-bacb-222095e89b52"
+              alt="">
+          </div>
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+  <div class="modal-order">
+    <div class="modal-order__total">
+      Сума: <span>{{ total }}</span> грн
+    </div>
+    <a class="modal-order__checkout">Оформити замовлення</a>
+  </div>
+</div>

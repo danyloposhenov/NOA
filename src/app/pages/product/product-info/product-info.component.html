@@ -1,0 +1,31 @@
+<div class="container">
+  <ul class="menu">
+  </ul>
+  <div class="product">
+    <div class="product-image">
+      <img [src]="currentProduct.imagePath" [alt]="currentProduct.name">
+    </div>
+    <div class="product-info">
+      <h3 class="product-info__title"> {{ currentProduct.name }} </h3>
+      <div class="product-info__desc">
+        <p>
+          <span>Склад: </span>
+          {{ currentProduct.description }}
+        </p>
+        <p>
+          <span>Вага: </span>
+          {{ currentProduct.weight }}
+        </p>
+      </div>
+      <div class="product-info__controls">
+        <p> {{ currentProduct.price * currentProduct.count}} грн</p>
+        <div class="product-info__controls-count">
+          <button (click)="productCount(currentProduct, false)" type="button">-</button>
+          <input type="text" [value]="currentProduct.count">
+          <button (click)="productCount(currentProduct, true)" type="button">+</button>
+        </div>
+        <button class="product-info__controls-order" (click)="addToBasket(currentProduct)">замовити</button>
+      </div>
+    </div>
+  </div>
+</div>

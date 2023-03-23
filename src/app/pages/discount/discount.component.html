@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="title">
+    <h2 class="title__text">Акції</h2>
+  </div>
+  <section class="discounts" >
+    <ul class="list">
+      <li class="list-item" *ngFor="let discount of userDiscounts">
+        <div class="list-item__image">
+          <img [routerLink]="[ '/discount/', discount.id ]" [src]="discount.imagePath" alt="">
+        </div>
+        <h3 [routerLink]="[ '/discount/', discount.id ]" class="list-item__title"> {{ discount.title }} </h3>
+        <a [routerLink]="[ '/discount/', discount.id ]" class="list-item__link">Дізнатись більше</a>
+      </li>
+    </ul>
+  </section>
+</div>

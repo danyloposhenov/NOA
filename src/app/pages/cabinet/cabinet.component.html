@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="nav">
+    <ul class="nav-list">
+      <li>
+        <a class="nav-list__link" [routerLink]="[ 'profile' ]" routerLinkActive="route-active">Особисті</a>
+      </li>
+      <li>
+        <a class="nav-list__link" [routerLink]="[ 'orders' ]" routerLinkActive="route-active">Історії замовлень</a>
+      </li>
+      <li>
+        <a class="nav-list__link" [routerLink]="[ 'password' ]" routerLinkActive="route-active">Зміна паролю</a>
+      </li>
+    </ul>
+    <div class="nav-exit">
+      <button type="button" class="nav-exit__btn" (click)="logOut()">Exit</button>
+    </div>
+  </div>
+  <div class="info">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

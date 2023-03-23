@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+
+.dialog-back {
+  background-color:rgba(0, 0, 0, 0.68);
+}
+
+.auth-dialog, .callback-dialog {
+  width: 600px;
+}
+
+.basket-dialog .mat-mdc-dialog-container .mdc-dialog__container {
+  height: auto;
+  width: 700px;
+  position: absolute;
+  right: 0;
+  top: 100px;
+  z-index: 99;
+  background-color: #fff;
+  border-top: 1px solid #dcdcdc;
+  border-radius: 0 0 10px 10px;
+}
