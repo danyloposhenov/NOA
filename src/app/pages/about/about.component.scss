@@ -1,0 +1,45 @@
+@import "../../../app/shared/styles/variables";
+
+.container {
+  width: 100%;
+  max-width: 1840px;
+  margin: 0 auto;
+  padding-left: 60px;
+  padding-right: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #2D2C2C;
+  .title {
+    margin: 60px auto;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2em;
+    span {
+      color: $secondColor;
+    }
+  }
+  .row {
+    max-width: 1160px;
+    margin: 0 -15px;
+    display: flex;
+    .info {
+      flex: 0 0 50%;
+      max-width: 50%;
+      padding: 0 15px;
+      margin-right: 20px;
+      h3 {
+        margin-bottom: 15px;
+        font-size: 34px;
+        font-weight: 500;
+        line-height: 1.2em;
+      }
+      p {
+        margin-bottom: 5px;
+        font-size: 18px;
+        color: #6D6D6D;
+        line-height: 1.5em;
+      }
+    }
+  }
+}

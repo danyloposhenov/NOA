@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../src/app/shared/styles/base';
+@import '../src/app/shared/styles/variables';
+@import '../src/app/shared/styles/fonts';
+@import 'ngx-toastr/toastr';
+
+@import 'app/shared/styles/theme-material';
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+
+body {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  overflow: visible;
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/noa-delivery.appspot.com/o/static%20image%2Fbg-body.png?alt=media&token=fc6a4b9c-a12c-4053-be72-8f6000510b07');
+  background-size: cover;
+  font-family: 'Cera Round Pro', sans-serif;
+  color: #2D2C2C;
+}
+app-root {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
