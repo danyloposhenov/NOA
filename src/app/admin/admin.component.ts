@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AccountService } from '../shared/services/account/account.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AdminComponent {
 
+  constructor(
+    private accountService: AccountService,
+    private router: Router
+  ) {}
+
+  logOut(): void {
+    this.router.navigate(['/']);
+    localStorage.removeItem('currentUser');
+    this.accountService.isUserLogin$.next(true);
+  }
 }

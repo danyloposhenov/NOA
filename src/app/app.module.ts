@@ -18,8 +18,7 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
-
-
+import { SideBarComponent } from './components/side-bar/side-bar.component';
 
 
 @NgModule({
@@ -29,6 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
     FooterComponent,
     BasketComponent,
     AuthDialogComponent,
+    SideBarComponent,
   ],
   imports: [
     BrowserModule,
