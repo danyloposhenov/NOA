@@ -59,7 +59,9 @@ export class AdminCategoriesComponent {
     this.list = true;
     this.editStatus = false;
     this.currentID = 0;
-    this.categoryForm.reset();
+    this.categoryForm.reset({ imagePath: null });
+    console.log(this.categoryForm);
+
   }
 
   editCategory(category: ICategoryResponse): void {
@@ -70,6 +72,7 @@ export class AdminCategoriesComponent {
       imagePath: category.imagePath
     })
     this.editStatus = true;
+    this.list = !this.list;
     this.currentID = category.id;
     this.isUploaded = true;
   }

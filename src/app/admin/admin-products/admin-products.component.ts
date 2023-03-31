@@ -41,6 +41,7 @@ export class AdminProductsComponent {
       name: [null, Validators.required],
       path: [null, Validators.required],
       description: [null],
+      extraPath: [null],
       weight: [null, Validators.required],
       price: [null, Validators.required],
       imagePath: [null],

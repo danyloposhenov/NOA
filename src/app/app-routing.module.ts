@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './shared/guards/auth/auth.guard';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
-    path: '',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+    path: 'home',
+    loadChildren: ()=>import('./pages/home/home.module').then(m=>m.HomeModule)
   },
   {
     path: 'product/:category',
@@ -45,11 +47,11 @@ const routes: Routes = [
   {
     path: 'cabinet',
     loadChildren: () => import('./pages/cabinet/cabinet.module').then(m => m.CabinetModule),
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin',
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   }
 ];

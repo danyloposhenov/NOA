@@ -10,10 +10,14 @@ import { SharedModule } from '../../shared/shared.module';
     ProductComponent,
     ProductInfoComponent
   ],
+  exports: [
+    ProductComponent
+  ],
   imports: [
     CommonModule,
     ProductRoutingModule,
     SharedModule
   ]
+
 })
 export class ProductModule { }

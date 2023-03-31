@@ -29,6 +29,21 @@ $typography-font-family: "Cera Round", sans-serif;
   }
 }
 
+.basket-dialog .mat-mdc-dialog-container .mdc-dialog__container {
+  width: 680px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #fff;
+  animation: transformSide 1s;
+  font-family: $typography-font-family;
+  .mdc-dialog__surface {
+    border: none;
+    box-shadow: none;
+  }
+}
+
 
 @keyframes transformLogin {
   0% {

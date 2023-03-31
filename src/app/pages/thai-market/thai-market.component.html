@@ -1,1 +1,84 @@
-<p>thai-market works!</p>
+<div class="container">
+  <div class="title">Thai <span>Market</span></div>
+  <div class="menu">
+    <ul class="menu-list">
+      <li class="menu-list-item" *ngFor="let category of categoryProducts">
+        <a [routerLink]="[ '/product/'+category.path ]" routerLinkActive="route-active"> {{ category.name }} </a>
+      </li>
+    </ul>
+  </div>
+  <div class="shop">
+    <h2 class="title">Thai Satay</h2>
+    <ul class="products">
+      <li class="products-item" *ngFor="let product of productsSatay">
+        <div class="products-item-favor">
+          <button [ngClass]="{'active': isActive}" (click)="isActive = !isActive"></button>
+        </div>
+        <div class="products-item-image" [routerLink]="[ '/product/'+product.category.path, product.id]">
+          <img [src]="product.imagePath" alt="">
+        </div>
+        <div class="products-item-title">
+          <h3 [routerLink]="[ '/product/'+product.category.path, product.id]"> {{ product.name }} </h3>
+          <p> {{ product.price }} </p>
+        </div>
+        <p class="products-item-desc"> {{ product.description | slice:0:100 }} <span *ngIf="product.description != null && product.description.length > 101">...</span> </p>
+        <div class="products-item-controls">
+          <div class="products-item-controls__count">
+            <button type="button">-</button>
+            <input type="text" [value]="product.count">
+            <button type="button">+</button>
+          </div>
+          <button class="products-item-controls__order">замовити</button>
+        </div>
+      </li>
+    </ul>
+    <h2 class="title">Thai LAVA GRILL</h2>
+    <ul class="products">
+      <li class="products-item" *ngFor="let product of productsGrill">
+        <div class="products-item-favor">
+          <button [ngClass]="{'active': isActive}" (click)="isActive = !isActive"></button>
+        </div>
+        <div class="products-item-image" [routerLink]="[ '/product/'+product.category.path, product.id]">
+          <img [src]="product.imagePath" alt="">
+        </div>
+        <div class="products-item-title">
+          <h3 [routerLink]="[ '/product/'+product.category.path, product.id]"> {{ product.name }} </h3>
+          <p> {{ product.price }} </p>
+        </div>
+        <p class="products-item-desc"> {{ product.description | slice:0:100 }} <span *ngIf="product.description != null && product.description.length > 101">...</span> </p>
+        <div class="products-item-controls">
+          <div class="products-item-controls__count">
+            <button type="button">-</button>
+            <input type="text" [value]="product.count">
+            <button type="button">+</button>
+          </div>
+          <button class="products-item-controls__order">замовити</button>
+        </div>
+      </li>
+    </ul>
+    <h2 class="title">Thai WOK</h2>
+    <ul class="products">
+      <li class="products-item" *ngFor="let product of productsWok">
+        <div class="products-item-favor">
+          <button [ngClass]="{'active': isActive}" (click)="isActive = !isActive"></button>
+        </div>
+        <div class="products-item-image" [routerLink]="[ '/product/'+product.category.path, product.id]">
+          <img [src]="product.imagePath" alt="">
+        </div>
+        <div class="products-item-title">
+          <h3 [routerLink]="[ '/product/'+product.category.path, product.id]"> {{ product.name }} </h3>
+          <p> {{ product.price }} </p>
+        </div>
+        <p class="products-item-desc"> {{ product.description | slice:0:100 }} <span *ngIf="product.description != null && product.description.length > 101">...</span> </p>
+        <div class="products-item-controls">
+          <div class="products-item-controls__count">
+            <button type="button">-</button>
+            <input type="text" [value]="product.count">
+            <button type="button">+</button>
+          </div>
+          <button class="products-item-controls__order">замовити</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

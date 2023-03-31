@@ -4,6 +4,7 @@ export interface IProductRequest {
   category: ICategoryResponse,
   name: string,
   path: string,
+  extraPath?: string,
   description: string,
   weight: string,
   price: number,

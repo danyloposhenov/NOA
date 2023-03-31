@@ -8,12 +8,32 @@
     <ul>
       <li>
         <a>Меню</a>
+        <ul class="menu-category">
+          <li class="menu-category-item" *ngFor="let category of categoryProducts">
+            <a [routerLink]="[ '/product/'+category.path ]" >
+              <div class="menu-category-item__icon">
+                <img [src]="category.imagePath" alt="">
+              </div>
+              <p> {{ category.name }} </p>
+            </a>
+          </li>
+        </ul>
       </li>
       <li>
-        <a>Thai market</a>
+        <a [routerLink]="[ '/thai-market/']">Thai market</a>
+        <ul class="menu-category">
+          <li class="menu-category-item" *ngFor="let category of categoryThai">
+            <a>
+              <div class="menu-category-item__icon">
+                <img [src]="category.imagePath" alt="">
+              </div>
+              <p> {{ category.name }} </p>
+            </a>
+          </li>
+        </ul>
       </li>
       <li>
-        <a>доставка</a>
+        <a [routerLink]="[ '/delivery' ]" >доставка</a>
       </li>
     </ul>
   </div>
@@ -80,3 +100,17 @@
     </div>
   </div>
 </div>
+
+<ng-container *ngIf="isActive">
+  <div class="basket" (click)="openBasketDialog()">
+    <img class="basket-blue" src="https://firebasestorage.googleapis.com/v0/b/noa-delivery.appspot.com/o/static%20image%2Fbasket_blue.svg?alt=media&token=ad39da58-91ca-434a-8989-dcdd88a8df07" >
+    <div class="basket-icon">
+      <img src="https://firebasestorage.googleapis.com/v0/b/noa-delivery.appspot.com/o/static%20image%2Fbasket.svg?alt=media&token=61856863-a37c-4553-b336-55672da90293" alt="">
+      <span> {{ amountProducts }} </span>
+    </div>
+    <div class="basket-box">
+      <p> {{ total }} </p>
+      <span>грн</span>
+    </div>
+  </div>
+</ng-container>

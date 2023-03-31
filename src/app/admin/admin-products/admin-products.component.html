@@ -58,6 +58,10 @@
           <input formControlName="weight" name="weight" type="text" placeholder="*Вага">
           <input formControlName="price" name="price" type="number" placeholder="*Ціна">
         </div>
+        <div class="forms__input-check">
+          <input class="check" formControlName="extraPath" type="checkbox">
+          <span> Culinasia menu </span>
+        </div>
         <ng-container *ngIf="!isUploaded">
           <div class="forms__file">
             <input type="file" (change)="upload($event)">
