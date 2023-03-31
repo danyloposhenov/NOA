@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="nav">
+    <ul class="nav-list">
+      <li>
+        <a class="nav-list__link" [routerLink]="[ 'category' ]" routerLinkActive="route-active">Категорії</a>
+      </li>
+      <li>
+        <a class="nav-list__link" [routerLink]="[ 'product' ]" routerLinkActive="route-active">Товари</a>
+      </li>
+      <li>
+        <a class="nav-list__link" [routerLink]="[ 'order' ]" routerLinkActive="route-active">Замовлення</a>
+      </li>
+    </ul>
+    <div class="nav-exit">
+      <button class="nav-exit__btn" (click)="logOut()">Вихід</button>
+    </div>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
