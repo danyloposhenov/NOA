@@ -81,7 +81,10 @@
         </div>
       </ng-container>
       <ng-container *ngIf="isLogin">
-        <a [routerLink]="[ '/'+loginUrl ]" routerLinkActive="route-active"> {{ loginPage }} </a>
+        <div class="account-link">
+          <img src="https://firebasestorage.googleapis.com/v0/b/noa-delivery.appspot.com/o/static%20image%2Fuser.svg?alt=media&token=a9534cc4-6b95-4579-b5c7-b6490decab1b" alt="">
+          <span [routerLink]="[ '/'+loginUrl ]" routerLinkActive="route-active"> {{ loginPage }} </span>
+        </div>
       </ng-container>
     </div>
     <div class="burger" (click)="openSideBar()">

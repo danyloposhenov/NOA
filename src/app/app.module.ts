@@ -35,7 +35,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot(), 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

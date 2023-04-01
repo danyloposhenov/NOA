@@ -5,16 +5,17 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ROLE } from 'src/app/shared/constants/role.constant';
+import { IRegister } from 'src/app/shared/interfaces/account/account.interface';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 
-export interface IRegister {
-  firstName: string;
-  lastName: string;
-  phoneNumber?: number;
-  email: string;
-  password: string;
-  confirmedPassword?: string;
-}
+// export interface IRegister {
+//   firstName: string;
+//   lastName: string;
+//   phoneNumber?: number;
+//   email: string;
+//   password: string;
+//   confirmedPassword?: string;
+// }
 
 @Component({
   selector: 'app-auth-dialog',
