@@ -1,0 +1,27 @@
+<section class="profile">
+
+  <div class="container">
+    <div class="menu">
+      <ul class="menu-list">
+        <li class="menu-list-item">
+          <a [routerLink]="[ '/cabinet/profile']" routerLinkActive="route-active">Особисті дані</a>
+        </li>
+        <li class="menu-list-item">
+          <a [routerLink]="[ '/cabinet/orders']" routerLinkActive="route-active">історії замовлень</a>
+        </li>
+        <li class="menu-list-item">
+          <a [routerLink]="[ '/cabinet/favorites']" routerLinkActive="route-active">улюблені</a>
+        </li>
+        <li class="menu-list-item">
+          <a [routerLink]="[ '/cabinet/password']" routerLinkActive="route-active">зміна паролю</a>
+        </li>
+      </ul>
+    </div>
+    <div class="info">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</section>
+
+
