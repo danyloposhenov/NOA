@@ -1,4 +1,4 @@
-<div class="header">
+<header class="header">
   <div class="header-logo">
     <a [routerLink]="[ '' ]">
       <img src="https://firebasestorage.googleapis.com/v0/b/noa-delivery.appspot.com/o/static%20image%2Flogo_one-1.svg?alt=media&token=e7975632-c826-4cd0-a3c0-f91cba86b2f1" alt="logo">
@@ -23,7 +23,7 @@
         <a [routerLink]="[ '/thai-market/']">Thai market</a>
         <ul class="menu-category">
           <li class="menu-category-item" *ngFor="let category of categoryThai">
-            <a>
+            <a [routerLink]="[ '/product/'+category.path ]">
               <div class="menu-category-item__icon">
                 <img [src]="category.imagePath" alt="">
               </div>
@@ -102,7 +102,7 @@
       </a>
     </div>
   </div>
-</div>
+</header>
 
 <ng-container *ngIf="isActive">
   <div class="basket" (click)="openBasketDialog()">

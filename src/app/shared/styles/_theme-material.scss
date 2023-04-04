@@ -12,6 +12,17 @@ $typography-font-family: "Cera Round", sans-serif;
   animation: transformLogin 0.6s;
   font-family: $typography-font-family;
 }
+.address-dialog .mat-mdc-dialog-container .mdc-dialog__container {
+  width: 680px;
+  animation: transformLogin 0.6s;
+  font-family: $typography-font-family;
+}
+
+.choice-delivery-dialog .mat-mdc-dialog-container .mdc-dialog__container {
+  width: 750px;
+  animation: transformLogin 0.6s;
+  font-family: $typography-font-family;
+}
 
 .side-bar-dialog .mat-mdc-dialog-container .mdc-dialog__container {
   width: 380px;

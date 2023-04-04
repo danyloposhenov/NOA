@@ -45,7 +45,7 @@ export class AdminProductsComponent {
       weight: [null, Validators.required],
       price: [null, Validators.required],
       imagePath: [null],
-      count: [1]
+      count: [1],
     })
   }
 
@@ -91,7 +91,7 @@ export class AdminProductsComponent {
       description: product.description,
       weight: product.weight,
       price: product.price,
-      imagePath: product.imagePath
+      imagePath: product.imagePath,
     })
     this.editStatus = true;
     this.isUploaded = true;

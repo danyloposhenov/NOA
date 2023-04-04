@@ -10,10 +10,9 @@ import { OrderService } from 'src/app/shared/services/order/order.service';
   styleUrls: ['./basket.component.scss']
 })
 export class BasketComponent {
-  public currentProduct!: IProductResponse;
+
   public basket: Array<IProductResponse> = [];
   public total = 0;
-  public openModalOrder = false;
 
   constructor(
     public dialog: MatDialog,
@@ -31,9 +30,6 @@ export class BasketComponent {
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
     }
     this.getTotalPrice();
-    if (this.basket.length > 0) {
-      this.openModalOrder = true;
-    }
   }
 
   getTotalPrice(): void {
@@ -78,13 +74,10 @@ export class BasketComponent {
     basket = basket.filter(item => item !== basket[index]);
     localStorage.setItem('basket', JSON.stringify(basket));
     this.orderService.changeBasket.next(true);
-    if (basket.length < 1) {
-      this.openModalOrder = !this.openModalOrder
-    }
     this.closeBasketDialog();
   }
 
-  reduceBasket(): void {
+  reduceAllBasket(): void {
     let basket: Array<IProductResponse> = [];
     localStorage.removeItem('basket');
     localStorage.setItem('basket', JSON.stringify(basket));

@@ -1,0 +1,60 @@
+@import "../../../../app/shared/styles/variables";
+
+
+.history {
+  width: 80%;
+  margin: 0 auto;
+  &-table {
+    min-width: 680px;
+    width: 100%;
+    border-collapse: collapse;
+    text-indent: initial;
+    border-spacing: 2px;
+    thead {
+      color: #6D6D6D;
+      tr {
+        display: table-row;
+        td {
+          display: table-cell;
+          padding: 15px;
+          border-bottom: 1px solid #ECECEC;
+          vertical-align: middle;
+          &:nth-child(1) {
+            width: 15%;
+            padding-left: 0;
+          }
+          &:nth-child(2) {
+            width: 15%;
+          }
+          &:nth-child(3) {
+            width: 30%;
+          }
+          &:nth-child(4) {
+            width: 10%;
+          }
+          &:nth-child(5) {
+            width: 15%;
+          }
+        }
+      }
+    }
+  }
+  &-empty {
+    padding: 30px;
+    margin-top: 100px;
+    margin-bottom: 26vh;
+    border-bottom: 1px solid #ECECEC;
+    text-align: center;
+    a {
+      position: relative;
+      color: #2d7d7d;
+      outline: none;
+      text-decoration: none;
+      transition: 0.25s;
+      cursor: pointer;
+      &:active {
+        transform: translateY(3px);
+      }
+    }
+  }
+}

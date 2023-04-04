@@ -10,7 +10,7 @@
     <ul class="products">
       <li class="products-item" *ngFor="let product of userProducts">
         <div class="products-item-favor">
-          <button [ngClass]="{'active': isActive}" (click)="isActive = !isActive"></button>
+          <button [ngClass]="{'active': product.favorite}" (click)="addFavorite(product)"></button>
         </div>
         <div class="products-item-image" [routerLink]="[ '/product/'+product.category.path, product.id]">
           <img [src]="product.imagePath" alt="">

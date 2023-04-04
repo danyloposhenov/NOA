@@ -26,6 +26,7 @@ export class HeaderComponent {
   public basket: Array<IProductResponse> = [];
   public total = 0;
   public amountProducts = 0;
+  public isMenu = false;
 
   constructor(
     public dialog: MatDialog,

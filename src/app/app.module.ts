@@ -19,6 +19,9 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { AddressComponent } from './components/address/address.component';
+import { HeaderInformerComponent } from './components/header-informer/header-informer.component';
+import { ChoiceDeliveryComponent } from './components/choice-delivery/choice-delivery.component';
 
 
 @NgModule({
@@ -29,6 +32,9 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     BasketComponent,
     AuthDialogComponent,
     SideBarComponent,
+    AddressComponent,
+    HeaderInformerComponent,
+    ChoiceDeliveryComponent,
   ],
   imports: [
     BrowserModule,

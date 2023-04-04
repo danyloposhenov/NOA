@@ -3,22 +3,22 @@
     <h3 class="profile-title title"><span>1</span>Особисті дані</h3>
     <div class="profile-row">
       <div class="profile-box">
-        <input type="text" class="profile-input" placeholder="*Ваше ім'я" [value]="currentUser.firstName" required >
+        <input type="text" class="profile-input" placeholder="*Ваше ім'я" [value]="currentUser.firstName" required>
       </div>
       <div class="profile-box">
         <input type="text" class="profile-input" placeholder="*Ваше прізвище" [value]="currentUser.lastName" required>
       </div>
     </div>
-    <input type="text" class="profile-input" placeholder="*Ваше номер телефону" [value]="currentUser.phoneNumber" required>
+    <input type="text" class="profile-input" placeholder="*Ваше номер телефону" [value]="currentUser.phoneNumber"
+      required>
     <input type="text" class="profile-input" placeholder="*Ваш емейл" [value]="currentUser.email" required>
   </div>
   <div class="address">
     <h3 class="address-title title"><span>2</span>Адреси</h3>
   </div>
   <div class="cabinet-buttons">
-    <button class="cabinet-buttons__btn add">Додати адресу</button>
+    <button class="cabinet-buttons__btn add" (click)="openAddressDialog()">Додати адресу</button>
     <button class="cabinet-buttons__btn save">Зберегти зміни</button>
   </div>
   <a class="cabinet-buttons__btn logout" (click)="logOut()">Вихід</a>
 </form>
-

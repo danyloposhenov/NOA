@@ -1,1 +1,30 @@
-<p>favorites works!</p>
+<div class="container">
+  <div class="title">
+    <h2 class="title__text">Улюблене</h2>
+  </div>
+  <div class="shop">
+    <ul class="products">
+      <li class="products-item" *ngFor="let product of userProducts">
+        <div class="products-item-favor">
+          <button (click)="deleteFavorite(product)"></button>
+        </div>
+        <div class="products-item-image" [routerLink]="[ '/product/'+product.category.path, product.id]">
+          <img [src]="product.imagePath" alt="">
+        </div>
+        <div class="products-item-title">
+          <h3 [routerLink]="[ '/product/'+product.category.path, product.id]"> {{ product.name }} </h3>
+          <p> {{ product.price }} </p>
+        </div>
+        <p class="products-item-desc"> {{ product.description | slice:0:100 }} <span *ngIf="product.description != null && product.description.length > 101">...</span> </p>
+        <div class="products-item-controls">
+          <div class="products-item-controls__count">
+            <button (click)="productCount(product, false)" type="button">-</button>
+            <input type="text" [value]="product.count">
+            <button (click)="productCount(product, true)" type="button">+</button>
+          </div>
+          <button class="products-item-controls__order" (click)="addToBasket(product)">замовити</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

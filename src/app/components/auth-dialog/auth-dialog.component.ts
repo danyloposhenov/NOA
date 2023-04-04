@@ -8,15 +8,6 @@ import { ROLE } from 'src/app/shared/constants/role.constant';
 import { IRegister } from 'src/app/shared/interfaces/account/account.interface';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 
-// export interface IRegister {
-//   firstName: string;
-//   lastName: string;
-//   phoneNumber?: number;
-//   email: string;
-//   password: string;
-//   confirmedPassword?: string;
-// }
-
 @Component({
   selector: 'app-auth-dialog',
   templateUrl: './auth-dialog.component.html',
@@ -31,7 +22,7 @@ export class AuthDialogComponent {
   public checkPassword = false;
   private registerData!: IRegister;
 
-  constructor(
+  constructor (
     private fb: FormBuilder,
     private accountService: AccountService,
     private router: Router,

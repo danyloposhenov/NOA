@@ -1,0 +1,70 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/fonts";
+
+
+.container {
+  max-width: 750px;
+  width: 100%;
+  padding: 65px 100px 75px;
+  vertical-align: middle;
+  text-align: center;
+  overflow: hidden;
+  color: #2D2C2C;
+  .title {
+    margin-bottom: 15px;
+    h2 {
+      line-height: 1.2em;
+      font-size: 34px;
+      font-weight: 700;
+      span {
+        color: $secondColor;
+      }
+    }
+  }
+  .delivery {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    &-link {
+      width: 100%;
+      max-width: 226px;
+      height: 187px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $mainColor;
+      outline: none;
+      border: 2px solid #ECECEC;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      &:first-child {
+        margin-right: 30px;
+      }
+      &-info {
+        img {
+          width: 98px;
+          height: 98px;
+          margin-bottom: 20px;
+          display: inline-block;
+        }
+        p {
+          font-size: 12px;
+          font-weight: 500;
+          letter-spacing: 0.03em;
+          text-transform: uppercase;
+        }
+      }
+    }
+    span {
+      margin-right: 30px;
+      font-size: 14px;
+      letter-spacing: 0.03em;
+      color: #6D6D6D;
+    }
+  }
+}

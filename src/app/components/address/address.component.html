@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="close" mat-dialog-close>
+    <img class="white-close"
+      src="https://firebasestorage.googleapis.com/v0/b/noa-delivery.appspot.com/o/static%20image%2Fclose-white.svg?alt=media&token=4a61eaf9-1de3-4d73-b051-f5ebb1e3a800">
+    <img class="blue-close"
+      src="https://firebasestorage.googleapis.com/v0/b/noa-delivery.appspot.com/o/static%20image%2Fclose-blue.svg?alt=media&token=16647ff7-6420-4141-a424-87fef6cdffcc">
+  </div>
+  <h2>Адреса</h2>
+  <form [formGroup]="addressForm" (ngSubmit)="addAddress()">
+    <div class="box">
+      <mat-form-field appearance="outline" class="box-input">
+        <mat-label>Ваше місто</mat-label>
+        <input matInput type="text" formControlName="city">
+      </mat-form-field>
+    </div>
+    <div class="box">
+      <mat-form-field appearance="outline" class="box-input-half">
+        <mat-label>Вулиця</mat-label>
+        <input matInput type="text" formControlName="street">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="box-input-half">
+        <mat-label>№ будинку</mat-label>
+        <input matInput type="text" formControlName="building">
+      </mat-form-field>
+    </div>
+    <div class="box">
+      <mat-form-field appearance="outline" class="box-input-half">
+        <mat-label>№ квартири</mat-label>
+        <input matInput type="text" formControlName="apartment">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="box-input-half">
+        <mat-label>Під'їзд</mat-label>
+        <input matInput type="text" formControlName="entrance">
+      </mat-form-field>
+    </div>
+    <div class="box">
+      <mat-form-field appearance="outline" class="box-input-half">
+        <mat-label>Поверх</mat-label>
+        <input matInput type="text" formControlName="floor">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="box-input-half">
+        <mat-label>Домофон</mat-label>
+        <input matInput type="text" formControlName="intercom">
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" id="btn" type="button" [disabled]="addressForm.invalid"
+      (click)="addAddress()" mat-dialog-close>Зберегти</button>
+  </form>
+</div>

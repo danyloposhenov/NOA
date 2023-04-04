@@ -9,6 +9,7 @@ export interface IProductRequest {
   weight: string,
   price: number,
   imagePath: string,
+  favorite?: boolean,
   count: number
 }
 

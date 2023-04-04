@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AddressComponent } from 'src/app/components/address/address.component';
 import { ROLE } from 'src/app/shared/constants/role.constant';
 import { IRegister } from 'src/app/shared/interfaces/account/account.interface';
 import { AccountService } from 'src/app/shared/services/account/account.service';
@@ -15,7 +17,8 @@ export class CabinetProfileComponent {
 
   constructor (
     private accountService: AccountService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +28,7 @@ export class CabinetProfileComponent {
   logOut(): void {
     this.router.navigate(['/']);
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('favoritesCurrentUser');
     this.accountService.isUserLogin$.next(true);
   }
 
@@ -33,5 +37,13 @@ export class CabinetProfileComponent {
     if (user.role === ROLE.USER) {
       this.currentUser = user;
     }
+  }
+
+  openAddressDialog(): void {
+    this.dialog.open(AddressComponent, {
+      backdropClass: 'dialog-back',
+      panelClass: 'address-dialog',
+      autoFocus: false,
+    })
   }
 }

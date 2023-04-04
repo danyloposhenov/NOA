@@ -18,6 +18,7 @@ export class ProductComponent {
   public userProducts!: IProductResponse[];
   public eventSubscription!: Subscription;
   public isActive: boolean = false;
+  public currentID!: string;
 
   constructor (
     private categoryServive: CategoryService,
@@ -62,8 +63,11 @@ export class ProductComponent {
         this.userProducts = data
           .filter(prod => prod["category"].path == categoryName) as IProductResponse[];
       }
+      this.updateFavoriteProducts();
     })
   }
+
+
 
   productCount(product: IProductResponse, value: boolean): void {
     if (value) {
@@ -88,6 +92,57 @@ export class ProductComponent {
     }
     localStorage.setItem('basket', JSON.stringify(basket));
     this.orderService.changeBasket.next(true);
+  }
+
+  addFavorite(product: IProductResponse): void {
+    let prod: Array<IProductResponse> = [];
+    product.favorite = true;
+    if (localStorage.getItem('currentUser')) {
+      if (localStorage.getItem('favoritesForCurrentUser')) {
+        prod = JSON.parse(localStorage.getItem('favoritesForCurrentUser') as string);
+        if (prod.some(prod => prod.id as string === product.id)) {
+          const index = prod.findIndex(prod => prod.id === product.id);
+          product.favorite = false;
+          prod.splice(index, 1);
+        } else {
+          prod.push(product);
+        }
+      } else {
+        prod.push(product);
+      }
+      localStorage.setItem('favoritesForCurrentUser', JSON.stringify(prod));
+    } else {
+      if (localStorage.length > 0 && localStorage.getItem('favorites')) {
+        prod = JSON.parse(localStorage.getItem('favorites') as string);
+        if (prod.some(prod => prod.id as string === product.id)) {
+          const index = prod.findIndex(prod => prod.id === product.id);
+          product.favorite = false;
+          prod.splice(index, 1);
+        } else {
+          prod.push(product);
+        }
+      } else {
+        prod.push(product);
+      }
+      localStorage.setItem('favorites', JSON.stringify(prod));
+    }
+  }
+
+  updateFavoriteProducts(): void {
+    let prod: Array<IProductResponse> = [];
+    if (localStorage.getItem('currentUser') && localStorage.getItem('favoritesForCurrentUser')) {
+      prod = JSON.parse(localStorage.getItem('favoritesForCurrentUser') as string);
+    } else if (localStorage.getItem('favorites') && !localStorage.getItem('currentUser')) {
+      prod = JSON.parse(localStorage.getItem('favorites') as string);
+    } else {
+      this.userProducts.map(elem => elem.favorite = false)
+    }
+    for (let element of prod) {
+      if (this.userProducts.some(elem => elem.id == element.id as string)) {
+        const index = this.userProducts.findIndex(prod => prod.id === element.id as string);
+        this.userProducts[index].favorite = true;
+      }
+    }
   }
 
   ngOnDestroy(): void {
