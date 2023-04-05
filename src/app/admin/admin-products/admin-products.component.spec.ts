@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AdminProductsComponent } from './admin-products.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../../../environments/environment';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { ToastrService } from 'ngx-toastr';
 
 describe('AdminProductsComponent', () => {
   let component: AdminProductsComponent;
@@ -8,7 +13,16 @@ describe('AdminProductsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminProductsComponent ]
+      declarations: [ AdminProductsComponent ],
+      imports: [
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAuth(() => getAuth()),
+        provideFirestore(() => getFirestore()),
+        provideStorage(() => getStorage()),
+      ],
+      providers: [
+        { provide: ToastrService, useValue: {} }
+      ]
     })
     .compileComponents();
 

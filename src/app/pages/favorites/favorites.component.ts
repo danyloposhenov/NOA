@@ -3,6 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
+import { ScrollService } from 'src/app/shared/services/scroll/scroll.service';
 
 @Component({
   selector: 'app-favorites',
@@ -15,7 +16,8 @@ export class FavoritesComponent {
 
   constructor (
     private router: Router,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private scroll: ScrollService
   ) {
     this.eventSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -26,6 +28,7 @@ export class FavoritesComponent {
 
   ngOnInit(): void {
     this.LoadProducts();
+    this.scroll.scrollToTop();
   }
 
   LoadProducts(): void {

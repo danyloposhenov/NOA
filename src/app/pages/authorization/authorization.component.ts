@@ -31,6 +31,7 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initAuthForm();
   }
+  
   ngOnDestroy(): void {
     if(this.loginSubscription) {
       this.loginSubscription.unsubscribe();
@@ -59,9 +60,11 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
       const currentUser = { ...user, uid: credential.user.uid }
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
       if (user && user['role'] === ROLE.USER) {
-        this.router.navigate(['/cabinet'])
+        this.router.navigate(['/cabinet']);
+        this.toastr.success('User successfully logined in')
       } else if (user && user['role'] === ROLE.ADMIN) {
         this.router.navigate(['/admin']);
+        this.toastr.success('ADMIN successfully logined in')
       }
       this.accountService.isUserLogin$.next(true);
     }, (e) => {

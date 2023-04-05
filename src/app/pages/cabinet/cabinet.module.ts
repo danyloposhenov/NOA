@@ -7,6 +7,7 @@ import { CabinetProfileComponent } from './cabinet-profile/cabinet-profile.compo
 import { CabinetPasswordComponent } from './cabinet-password/cabinet-password.component';
 import { CabinetOrdersComponent } from './cabinet-orders/cabinet-orders.component';
 import { CabinetFavoritesComponent } from './cabinet-favorites/cabinet-favorites.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CabinetFavoritesComponent } from './cabinet-favorites/cabinet-favorites
   imports: [
     CommonModule,
     CabinetRoutingModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ]
 })
 export class CabinetModule { }

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChoiceDeliveryComponent } from './choice-delivery.component';
+import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 
 describe('ChoiceDeliveryComponent', () => {
   let component: ChoiceDeliveryComponent;
@@ -8,7 +9,13 @@ describe('ChoiceDeliveryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChoiceDeliveryComponent ]
+      declarations: [ ChoiceDeliveryComponent ],
+      imports: [
+        MatDialogModule
+      ],
+      providers: [
+        { provide: MatDialogRef, useValue: {} }
+      ]
     })
     .compileComponents();
 

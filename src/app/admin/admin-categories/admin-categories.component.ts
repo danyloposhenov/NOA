@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { ImageService } from 'src/app/shared/services/image/image.service';
+import { ScrollService } from 'src/app/shared/services/scroll/scroll.service';
 
 
 @Component({
@@ -23,12 +24,14 @@ export class AdminCategoriesComponent {
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryService,
-    private imageService: ImageService
+    private imageService: ImageService,
+    private scroll: ScrollService
   ) { }
 
   ngOnInit(): void {
     this.loadCategory();
     this.initCategoryForm();
+    this.scroll.scrollToTop();
   }
 
   initCategoryForm(): void {
@@ -60,8 +63,6 @@ export class AdminCategoriesComponent {
     this.editStatus = false;
     this.currentID = 0;
     this.categoryForm.reset({ imagePath: null });
-    console.log(this.categoryForm);
-
   }
 
   editCategory(category: ICategoryResponse): void {

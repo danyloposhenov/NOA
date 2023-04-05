@@ -24,7 +24,7 @@
           <td> {{ product.price }} грн</td>
           <td>
             <div>
-              <img [src]="product.imagePath" alt="">
+              <img [src]="product.imagePath" alt="product-image">
             </div>
           </td>
           <td>
@@ -70,7 +70,7 @@
         <ng-container *ngIf="isUploaded">
           <div class="forms-download">
             <div class="forms-download__image">
-              <img [src]="valueByControl('imagePath')" alt="">
+              <img [src]="valueByControl('imagePath')" alt="current-image">
             </div>
             <button
               type="button"

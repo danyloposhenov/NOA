@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
   selector: 'app-address',
@@ -12,6 +13,7 @@ export class AddressComponent {
 
   constructor (
     private fb: FormBuilder,
+    private orderService: OrderService
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +33,13 @@ export class AddressComponent {
   }
 
   addAddress(): void {
-
+    if (localStorage.getItem('currentUser')) {
+      let currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
+      let currentID = currentUser['uid'];
+      currentUser['address'].push(this.addressForm.value);
+      localStorage.setItem('currentUser', currentUser);
+      this.orderService.updateUserOrders(currentUser, currentID);
+    }
   }
 
 }

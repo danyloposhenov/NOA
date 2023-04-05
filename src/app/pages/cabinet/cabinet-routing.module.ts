@@ -8,7 +8,8 @@ import { CabinetFavoritesComponent } from './cabinet-favorites/cabinet-favorites
 
 const routes: Routes = [
   {
-    path: '', component: CabinetComponent,
+    path: '',
+    component: CabinetComponent,
     children: [
       { path: 'profile', component: CabinetProfileComponent },
       { path: 'orders', component: CabinetOrdersComponent },

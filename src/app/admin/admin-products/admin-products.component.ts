@@ -6,14 +6,15 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { ImageService } from 'src/app/shared/services/image/image.service';
 import { ToastrService } from 'ngx-toastr';
+import { ScrollService } from 'src/app/shared/services/scroll/scroll.service';
 @Component({
   selector: 'app-admin-products',
   templateUrl: './admin-products.component.html',
   styleUrls: ['./admin-products.component.scss']
 })
 export class AdminProductsComponent {
-  public list = true;
 
+  public list = true;
   public adminCategories: Array<ICategoryResponse> = [];
   public adminProducts: Array<IProductResponse> = [];
   public productForm!: FormGroup;
@@ -26,13 +27,15 @@ export class AdminProductsComponent {
     private categoryService: CategoryService,
     private productService: ProductService,
     private imageService: ImageService,
-    private toastr: ToastrService
+    private scroll: ScrollService,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
     this.initProductForm();
     this.loadCategories();
     this.loadProducts();
+    this.scroll.scrollToTop();
   }
 
   initProductForm(): void {

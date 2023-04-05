@@ -1,7 +1,8 @@
 .content {
-  display: block;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
   width: 100%;
-  max-width: 1840px;
   height: max-content;
-  margin: 180px auto 70px;
+  margin: 154px auto 70px;
 }

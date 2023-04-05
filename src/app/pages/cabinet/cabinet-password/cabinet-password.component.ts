@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { getAuth, updatePassword, User } from "firebase/auth";
+import { ScrollService } from 'src/app/shared/services/scroll/scroll.service';
 
 @Component({
   selector: 'app-cabinet-password',
@@ -14,11 +15,13 @@ export class CabinetPasswordComponent {
 
   constructor(
     private fb: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private scroll: ScrollService
   ) { }
 
   ngOnInit(): void {
     this.initChangePasswordForm();
+    this.scroll.scrollToTop();
   }
 
   initChangePasswordForm(): void {

@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CabinetComponent } from './cabinet.component';
+import {ToastrService} from "ngx-toastr";
+import {RouterModule} from "@angular/router";
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('CabinetComponent', () => {
   let component: CabinetComponent;
@@ -8,7 +11,14 @@ describe('CabinetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CabinetComponent ]
+      declarations: [ CabinetComponent ],
+      imports:[
+        RouterModule,
+        RouterTestingModule
+      ],
+      providers:[
+        { provide: ToastrService, useValue: {} }
+      ]
     })
     .compileComponents();
 

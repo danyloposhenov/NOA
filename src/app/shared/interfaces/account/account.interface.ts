@@ -11,5 +11,6 @@ export interface IRegister {
   password: string,
   confirmedPassword?: string,
   role?: string,
-  orders?: []
+  orders?: [],
+  address?: []
 }

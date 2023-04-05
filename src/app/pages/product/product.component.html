@@ -7,13 +7,33 @@
     </ul>
   </div>
   <div class="shop">
+    <ul class="sort">
+      <li [ngClass]="{'active': !isCulinasia}" (click)="choiceCulinasia()">Всі</li>
+      <li [ngClass]="{'active': isCulinasia}" (click)="choiceCulinasia()">CULINASIA MENU</li>
+      <div class="sort-option">
+        <p>Сортувати по</p>
+        <div class="choice" [ngClass]="{'show': showSort}" (click)="showSort = !showSort">
+          <div class="choice-name"><span class="icon-arrow-up"></span> Ціна</div>
+          <div class="choice-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"></path>
+            </svg>
+          </div>
+          <div class="choice-wrap">
+            <div class="choice-var" (click)="changePriceUp()"><span class="icon-arrow-up"></span>Ціна</div>
+            <div class="choice-var" (click)="changePriceDown()"><span class="icon-arrow-down"></span>Ціна</div>
+          </div>
+        </div>
+      </div>
+    </ul>
     <ul class="products">
       <li class="products-item" *ngFor="let product of userProducts">
         <div class="products-item-favor">
           <button [ngClass]="{'active': product.favorite}" (click)="addFavorite(product)"></button>
         </div>
+        <div class="products-item-culinasia" *ngIf="product.extraPath">Culinasia menu</div>
         <div class="products-item-image" [routerLink]="[ '/product/'+product.category.path, product.id]">
-          <img [src]="product.imagePath" alt="">
+          <img [src]="product.imagePath" alt="product">
         </div>
         <div class="products-item-title">
           <h3 [routerLink]="[ '/product/'+product.category.path, product.id]"> {{ product.name }} </h3>

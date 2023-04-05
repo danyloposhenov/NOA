@@ -12,7 +12,7 @@ export class AdminComponent {
   constructor(
     private accountService: AccountService,
     private router: Router
-  ) {}
+  ) { }
 
   logOut(): void {
     this.router.navigate(['/']);

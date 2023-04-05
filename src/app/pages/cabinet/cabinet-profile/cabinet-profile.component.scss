@@ -38,6 +38,16 @@ form {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    p {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 5px;
+      background-color: $mainColor;
+      color: $secondColor;
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
   }
   &-box {
     flex: 0 0 50%;
@@ -64,6 +74,18 @@ form {
     text-overflow: ellipsis;
     &:focus {
       border: 1px solid #2d7d7d;
+    }
+  }
+  &-address {
+    padding: 0 10px;
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin: 5px 0;
+    span {
+      display: inline-block;
+      padding: 5px;
+      border-bottom: 1px solid lightgray;
+      font-weight: 600;
     }
   }
 }

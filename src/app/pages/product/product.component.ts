@@ -6,6 +6,7 @@ import { IProductResponse } from 'src/app/shared/interfaces/product/product.inte
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
+import { ScrollService } from 'src/app/shared/services/scroll/scroll.service';
 
 @Component({
   selector: 'app-product',
@@ -18,11 +19,14 @@ export class ProductComponent {
   public userProducts!: IProductResponse[];
   public eventSubscription!: Subscription;
   public isActive: boolean = false;
+  public isCulinasia: boolean = false;
+  public showSort: boolean = false;
   public currentID!: string;
 
-  constructor (
+  constructor(
     private categoryServive: CategoryService,
     private productServive: ProductService,
+    private scroll: ScrollService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private orderService: OrderService
@@ -30,13 +34,15 @@ export class ProductComponent {
     this.eventSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.LoadProducts();
+        this.scroll.scrollToTop();
       }
     })
-   }
+  }
 
   ngOnInit(): void {
     this.initCategory();
     this.LoadProducts();
+    this.scroll.scrollToTop();
   }
 
   initCategory(): void {
@@ -67,7 +73,24 @@ export class ProductComponent {
     })
   }
 
+  choiceCulinasia(): void {
+    const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
+    this.isCulinasia = !this.isCulinasia;
+    if (this.isCulinasia) {
+      this.userProducts = this.userProducts.filter(prod => prod["extraPath"]);
+    } else {
+      this.LoadProducts();
+      this.userProducts = this.userProducts.filter(prod => prod["category"].path == categoryName)
+    }
+  }
 
+  changePriceUp(): void {
+    this.userProducts = this.userProducts.sort((a, b) => a.price - b.price)
+  }
+
+  changePriceDown(): void {
+    this.userProducts = this.userProducts.sort((a, b) => b.price - a.price);
+  }
 
   productCount(product: IProductResponse, value: boolean): void {
     if (value) {

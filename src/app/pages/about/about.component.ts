@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ScrollService } from 'src/app/shared/services/scroll/scroll.service';
 
 @Component({
   selector: 'app-about',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AboutComponent {
 
+  constructor(private scroll: ScrollService) { }
+
+  ngOnInit(): void {
+    this.scroll.scrollToTop();
+  }
 }

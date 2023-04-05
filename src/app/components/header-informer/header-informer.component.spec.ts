@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderInformerComponent } from './header-informer.component';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 describe('HeaderInformerComponent', () => {
   let component: HeaderInformerComponent;
@@ -8,7 +9,13 @@ describe('HeaderInformerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderInformerComponent ]
+      declarations: [ HeaderInformerComponent ],
+      imports: [
+        MatDialogModule
+      ],
+      providers: [
+        { provide: MatDialogRef, useValue: {} },
+      ]
     })
     .compileComponents();
 

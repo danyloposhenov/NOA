@@ -19,7 +19,7 @@
             <td>{{ category.path }}</td>
             <td>
               <div>
-                <img [src]="category.imagePath" alt="">
+                <img [src]="category.imagePath" alt="category-image">
               </div>
             </td>
             <td>
@@ -46,7 +46,7 @@
         <ng-container *ngIf="isUploaded">
           <div class="forms-download">
             <div class="forms-download__image">
-              <img [src]="valueByControl('imagePath')" alt="">
+              <img [src]="valueByControl('imagePath')" alt="current-image">
             </div>
             <button type="button" class="forms-download__btn" (click)="deleteImage()">Delete</button>
           </div>

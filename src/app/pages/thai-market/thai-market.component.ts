@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
-import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
+import { ScrollService } from 'src/app/shared/services/scroll/scroll.service';
 
 @Component({
   selector: 'app-thai-market',
@@ -24,9 +24,8 @@ export class ThaiMarketComponent {
   constructor (
     public categoryServive: CategoryService,
     private productServive: ProductService,
-    private activatedRoute: ActivatedRoute,
+    private scroll: ScrollService,
     private router: Router,
-    private orderService: OrderService
   ) {
     this.eventSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -42,6 +41,7 @@ export class ThaiMarketComponent {
     this.LoadProductsSatay();
     this.LoadProductsGrill();
     this.LoadProductsWok();
+    this.scroll.scrollToTop();
   }
 
   initCategory(): void {

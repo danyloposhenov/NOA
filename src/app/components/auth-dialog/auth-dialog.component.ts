@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ROLE } from 'src/app/shared/constants/role.constant';
@@ -22,6 +23,7 @@ export class AuthDialogComponent {
   public checkPassword = false;
   private registerData!: IRegister;
 
+
   constructor (
     private fb: FormBuilder,
     private accountService: AccountService,
@@ -29,6 +31,7 @@ export class AuthDialogComponent {
     private auth: Auth,
     private afs: Firestore,
     private toastr: ToastrService,
+    private dialogRef: MatDialogRef<AuthDialogComponent>,
   ) { }
 
   ngOnInit(): void {
@@ -56,11 +59,17 @@ export class AuthDialogComponent {
 
   loginUser(): void {
     const { email, password } = this.authForm.value;
-    this.login(email, password).then(() => {
-      this.toastr.success('User logined successfully');
-    }).catch(e => {
-      this.toastr.error(e.message);
-    })
+    if (email !== 'admin@gmail.com') {
+      this.login(email, password).then(() => {
+        this.toastr.success('User logined successfully');
+      }).catch(e => {
+        this.toastr.error(e.message);
+      })
+    } else {
+      this.toastr.error('Access for admin from /auth');
+      this.authForm.reset();
+      this.dialogRef.close();
+    }
   }
 
   async login(email: string, password: string): Promise<void> {
