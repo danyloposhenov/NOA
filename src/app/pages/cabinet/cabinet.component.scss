@@ -1,0 +1,56 @@
+@import "../../../app/shared/styles/variables";
+.profile {
+  padding-top: 100px;
+}
+.container {
+  width: 100%;
+  max-width: 1840px;
+  padding-left: 60px;
+  padding-right: 60px;
+  .menu {
+    position: relative;
+    margin-bottom: 60px;
+    text-align: center;
+    &-list {
+      padding: 3px;
+      display: inline-flex;
+      flex-wrap: wrap;
+      background: #F5F5F5;
+      border-radius: 6px;
+      list-style: none;
+      &-item {
+        a {
+          position: relative;
+          display: inline-block;
+          margin-right: 5px;
+          padding: 15px 24px;
+          font-size: 14px;
+          font-weight: 500;
+          color: #6D6D6D;
+          text-transform: uppercase;
+          text-decoration: none;
+          transition: 0.25s;
+          &:active {
+            transform: translateY(3px);
+          }
+          &:hover {
+            color: $mainColor;
+            background-color: #2d7d7d;
+            border-radius: 6px;
+          }
+          &.route-active {
+            color: $mainColor;
+            background-color: #2d7d7d;
+            border-radius: 6px;
+          }
+        }
+      }
+    }
+  }
+  .info {
+    flex: 0 0 100%;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+  }
+}

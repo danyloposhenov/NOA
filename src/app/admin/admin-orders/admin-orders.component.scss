@@ -1,0 +1,60 @@
+@import "../../../app/shared/styles/variables";
+
+.history {
+  width: 100%;
+  margin: 0 auto;
+  &-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-indent: initial;
+    border-spacing: 2px;
+    td {
+      display: table-cell;
+      padding: 15px;
+      height: auto;
+      border-bottom: 1px solid #ECECEC;
+      vertical-align: middle;
+      &:nth-child(1) {
+        width: 10%;
+        padding-left: 0;
+      }
+      &:nth-child(2) {
+        width: 10%;
+      }
+      &:nth-child(3) {
+        width: 20%;
+      }
+      &:nth-child(4) {
+        width: 40%;
+      }
+      &:nth-child(5) {
+        width: 10%;
+      }
+      &:nth-child(6) {
+        width: 10%;
+      }
+    }
+    thead {
+      color: #6D6D6D;
+      border-bottom: 2px solid $secondColor;
+      tr {
+        display: table-row;
+      }
+    }
+    tbody {
+      width: 100%;
+      tr {
+        border-bottom: 2px solid lightgrey;
+      }
+      td {
+        word-wrap: break-word;
+        padding-right: 5px;
+        line-height: 1.5;
+        vertical-align: middle;
+        &:last-child {
+          color: $secondColor;
+        }
+      }
+    }
+  }
+}

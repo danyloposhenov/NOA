@@ -1,0 +1,331 @@
+@import "../../../app/shared/styles/variables";
+
+.container {
+  width: 100%;
+  max-width: 1840px;
+  padding: 60px 60px 0;
+  color: #2D2C2C;
+  .menu {
+    position: relative;
+    text-align: center;
+    margin-bottom: 30px;
+    &-list {
+      display: inline-flex;
+      flex-wrap: wrap;
+      padding: 3px;
+      border-radius: 6px;
+      background: #F5F5F5;
+      &-item {
+        a {
+          display: inline-block;
+          margin-right: 5px;
+          padding: 15px 24px;
+          font-size: 14px;
+          font-weight: 500;
+          text-decoration: none;
+          text-transform: uppercase;
+          outline: none;
+          color: #6D6D6D;
+          transition: all 0.3s;
+          &:active {
+            transform: translateY(3px);
+          }
+          &:hover {
+            color: $mainColor;
+            background-color: #2d7d7d;
+            border-radius: 6px;
+          }
+          &.route-active {
+            color: $mainColor;
+            background-color: #2d7d7d;
+            border-radius: 6px;
+          }
+        }
+      }
+    }
+  }
+  .sort {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    li {
+      position: relative;
+      height: 100%;
+      margin-right: 20px;
+      cursor: pointer;
+      transition: 0.25s;
+      &:active {
+        transform: translateY(3px);
+      }
+      &::before {
+        content: '';
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        margin-top: 1px;
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #ECECEC;
+        border-radius: 5px;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        left: 4px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        background-color: #2d7d7d;
+        border-radius: 3px;
+        transition: 0.25s;
+        transform: scale(0);
+      }
+      &.active::after {
+        transform: scale(1);
+      }
+    }
+    &-option {
+      display: flex;
+      align-items: center;
+      p {
+        margin-right: 5px;
+      }
+      .choice {
+        width: 150px;
+        height: 40px;
+        padding: 0 12px;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end;
+        border: 1px solid #ececec;
+        border-radius: 5px;
+        background-color: #fff;
+        transition: 0.3s ease;
+        z-index: 1;
+        &.show {
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          .choice-wrap {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+          }
+          .choice-icon {
+            transform: rotate(180deg);
+          }
+        }
+        &:hover {
+          border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        .icon-arrow-up, .icon-arrow-down {
+          font-size: 20px;
+          margin-right: 12px;
+          transition: 0.3s ease;
+          &::before {
+            content: "\2191";
+          }
+        }
+        .icon-arrow-down::before {
+          content: "\2193";
+        }
+        &-name {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          padding-left: 12px;
+          display: flex;
+          align-items: center;
+          color: #2d2c2c;
+          cursor: pointer;
+          z-index: 2;
+          .icon-arrow-up {
+            color: $secondColor;
+            &::before {
+              content: "\2191";
+            }
+          }
+        }
+        &-icon {
+          width: 24px;
+          height: 24px;
+          z-index: 1;
+          transition: 0.3s ease;
+        }
+        &-wrap {
+          position: absolute;
+          z-index: 2;
+          top: 100%;
+          left: 0;
+          background-color: #fff;
+          width: 100%;
+          border: 1px solid #ececec;
+          border-radius: 5px;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(20px);
+        }
+        &-var {
+          height: 40px;
+          padding: 0 12px;
+          display: flex;
+          align-items: center;
+          color: rgba(0, 0, 0, 0.64);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .products {
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    &-item {
+      position: relative;
+      flex: 0 0 25%;
+      max-width: 25%;
+      margin-bottom: 45px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      transition: 0.5s;
+      &:hover {
+        box-shadow: 0 0 6px 6px rgba(0,0,0,.02);
+      }
+      &-favor {
+        width: 23px;
+        height: 20px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        button {
+          width: 100%;
+          height: 100%;
+          background: none;
+          outline: none;
+          border: none;
+          background-image: url('https://firebasestorage.googleapis.com/v0/b/monosushi-6a750.appspot.com/o/static%2Flove-empty-icon.svg?alt=media&token=1178f342-e4e6-4fb1-a4a7-f19b6b926dd6');
+          background-repeat: no-repeat;
+          background-size: cover;
+          &:active {
+            transform: translateY(3px);
+          }
+          &.active {
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/monosushi-6a750.appspot.com/o/static%2Flove-icon.svg?alt=media&token=23ac69e2-457c-4510-8b81-10cdfb76186b');
+          }
+        }
+      }
+      &-culinasia {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 8px 10px;
+        background-color: #ff6400;
+        font-size: 10px;
+        color: $mainColor;
+        border-radius: 3px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+      }
+      &-image {
+        width: 100%;
+        height: 400px;
+        text-align: center;
+        cursor: pointer;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+      &-title {
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-weight: 600;
+        h3 {
+          height: 100%;
+          font-size: 18px;
+          cursor: pointer;
+        }
+      }
+      &-desc {
+        height: 66px;
+        font-size: 15px;
+        line-height: 1.5;
+        color: #6D6D6D;
+      }
+      &-controls {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__count {
+          display: inline-flex;
+          align-items: center;
+          color: #181818;
+          font-size: 14px;
+          button {
+            width: 30px;
+            height: 30px;
+            background-color: #F5F5F5;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #2D2C2C;
+            transition: 0.25s;
+            &:hover {
+              background-color: $secondColor;
+              color: $mainColor;
+            }
+            &:active {
+              transform: translateY(3px);
+            }
+          }
+          input {
+            width: 50px;
+            height: 26px;
+            text-align: center;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: #2D2C2C;
+          }
+        }
+        &__order {
+          padding: 10px 15px;
+          line-height: 20px;
+          text-align: center;
+          background: #2d7d7d;
+          border: 2px solid #2d7d7d;
+          border-radius: 6px;
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: .15em;
+          text-transform: uppercase;
+          text-decoration: none;
+          color: #FFF;
+          transition: 0.3s;
+          &:hover {
+            background-color: transparent;
+            color: $secondColor;
+          }
+          &:active {
+            transform: translateY(3px);
+          }
+        }
+      }
+    }
+  }
+}
+

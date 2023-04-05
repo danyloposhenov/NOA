@@ -1,0 +1,39 @@
+<div class="history">
+  <table class="history-table">
+    <thead>
+      <tr>
+        <td>№ замовлення</td>
+        <td>Дата та час</td>
+        <td>Адреса</td>
+        <td>Продукти</td>
+        <td>Сума</td>
+        <td>Статус</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of myOrders; index as i">
+        <td> {{ i + 1 }} </td>
+        <td> {{ order.date }} </td>
+        <td>
+          м. {{ order.userData['city']  }},
+          вул. {{ order.userData['street'] }},
+          б. {{ order.userData['building'] }},
+          кв. {{ order.userData['apartment'] }}
+        </td>
+        <td>
+          <div *ngFor="let product of order.userBasket">
+            № Продукту: {{ product.name}}
+            <br>
+            Кіл-сть: {{ product.count }}
+          </div>
+        </td>
+        <td> {{ order.total }} грн</td>
+        <td [style]="order['status'] ? 'color: green' : 'color: red'"> {{ order['status'] ? 'Виконано' : 'Не виконано' }} </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="history-empty" *ngIf="myOrders.length == 0">
+    <span>Поки що Ви не зробили жодного замовлення </span>
+    <a [routerLink]="[ '/product/culinasia-menu' ]">перейти в каталог</a>
+  </div>
+</div>

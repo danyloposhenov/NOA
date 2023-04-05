@@ -1,0 +1,30 @@
+<div class="title">
+  <h4>Кошик</h4>
+  <button class="title-reduce" (click)="reduceAllBasket()">Очистити кошик</button>
+</div>
+<div class="container">
+  <ul class="basket">
+    <li class="basket-item" *ngFor="let product of basket">
+      <a class="basket-item-image">
+        <img [src]="product.imagePath"  alt="product-image">
+      </a>
+      <div class="basket-item-desc">
+        <a class="basket-item-desc__name"> {{ product.name }} </a>
+        <div class="basket-item-desc__controls">
+          <div>
+            <button (click)="productCount(product, false)" type="button">-</button>
+            <input type="text" [value]="product.count">
+            <button (click)="productCount(product, true)" type="button">+</button>
+          </div>
+        </div>
+        <div class="basket-item-desc__price"><span> {{ product.price * product.count }} </span> грн</div>
+      </div>
+      <button class="basket-item-reduce" (click)="deleteFromBasket(product)"></button>
+    </li>
+  </ul>
+  <div class="order">
+    <p class="order-amount">Сума: <span> {{ total }} </span> грн</p>
+    <a class="order-submit"(click)="orderSubmit()">Оформити замовлення</a>
+  </div>
+</div>
+<button class="close" mat-dialog-close></button>

@@ -1,0 +1,138 @@
+<div class="container">
+  <h2 class="title-name">Оформлення замовлення</h2>
+  <form [formGroup]="userForm">
+    <div class="checkout">
+      <div class="checkout-box">
+        <div class="profile">
+          <h3 class="profile-title title"><span>1</span>Контактні дані</h3>
+          <div class="profile-row">
+            <div class="profile-contact">
+              <input type="text" class="profile-input" placeholder="*Ваше ім'я" formControlName="firstName">
+            </div>
+            <div class="profile-contact">
+              <input type="text" class="profile-input" placeholder="*Ваше прізвище" formControlName="lastName">
+            </div>
+          </div>
+          <div class="profile-contact">
+            <input type="text" class="profile-input" placeholder="*Ваше номер телефону" formControlName="phoneNumber">
+          </div>
+          <div class="profile-contact">
+            <input type="text" class="profile-input" placeholder="*Ваш емейл" formControlName="email">
+          </div>
+        </div>
+      </div>
+      <div class="checkout-box">
+        <div class="profile">
+          <h3 class="profile-title title"><span>2</span>Інформація про доставку</h3>
+          <div class="profile-checkbox">
+            <label for="delivery">
+              <input class="profile-input__checkbox" id="delivery" type="radio" name="delivery" value="courier" checked>
+              <span *ngIf="choiceDelivery">Доставка кур'єром</span>
+              <span *ngIf="!choiceDelivery">Самовивіз</span>
+            </label>
+          </div>
+          <div class="profile-row">
+            <div class="profile-address">
+              <input class="profile-input " type="text" placeholder="*Місто" formControlName="city">
+            </div>
+            <div class="profile-address">
+              <input class="profile-input " type="text" placeholder="*Вулиця" formControlName="street">
+            </div>
+            <div class="profile-address">
+              <input class="profile-input " type="text" placeholder="*№ будинку" formControlName="building">
+            </div>
+            <div class="profile-address">
+              <input class="profile-input " type="text" placeholder="*Під'їзд" formControlName="entrance">
+            </div>
+            <div class="profile-address">
+              <input class="profile-input " type="text" placeholder="*Квартира" formControlName="apartment">
+            </div>
+            <div class="profile-address">
+              <input class="profile-input " type="text" placeholder="*Поверх" formControlName="floor">
+            </div>
+            <div class="profile-address">
+              <input class="profile-input " type="text" placeholder="*Домофон" formControlName="intercom">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="orders">
+      <h3 class="orders-title title">Ваше замовлення</h3>
+      <div class="products">
+        <ul class="basket">
+          <li class="basket-item" *ngFor="let product of basket">
+            <a class="basket-item-image">
+              <img [src]="product.imagePath" alt="product">
+            </a>
+            <div class="basket-item-desc">
+              <a class="basket-item-desc__name"> {{ product.name }} </a>
+              <div class="basket-item-desc__controls">
+                <div>
+                  <button (click)="productCount(product, false)" type="button">-</button>
+                  <input type="text" [value]="product.count">
+                  <button (click)="productCount(product, true)" type="button">+</button>
+                </div>
+              </div>
+              <div class="basket-item-desc__price"><span> {{ product.price * product.count }} </span> грн</div>
+            </div>
+            <button class="basket-item-reduce" (click)="deleteFromBasket(product)"></button>
+          </li>
+        </ul>
+        <div class="basket-item things">
+          <h4 class="basket-item-desc__name">Прибори</h4>
+          <p class="basket-item-desc__info">Вкажіть кількість осіб, на яке робите замовлення</p>
+          <div class="basket-item-desc__controls">
+            <div>
+              <button type="button" (click)="thingsCount(false)">-</button>
+              <input type="text" [value]="amountThings">
+              <button type="button" (click)="thingsCount(true)">+</button>
+            </div>
+          </div>
+          <div class="basket-item-desc__price"><span>Безкоштовно</span></div>
+        </div>
+      </div>
+      <div class="payment">
+        <h3 class="payment-title title">Інформація про оплату</h3>
+        <div class="payment-block">
+          <div class="payment-block-checkbox cash">
+            <label for="payment-cash">
+              <input id="payment-cash" name="payment" type="radio" checked (change)="sortPayment()">
+              <span>Оплата готівкою</span>
+            </label>
+          </div>
+          <div class="payment-block-info rest" *ngIf="payment">
+            <p>Решта</p>
+            <input type="number" placeholder="Сума" formControlName="restMoney" *ngIf="restMoney">
+            <label for="rest">
+              <input id="rest" name="rest" type="checkbox" (change)="restMoney = !restMoney">
+              <span>Без решти</span>
+            </label>
+          </div>
+          <div class="payment-block-checkbox liqpay">
+            <label for="payment-liqpay">
+              <input id="payment-liqpay" name="payment" type="radio" (change)="sortPayment()">
+              <span>Online payment LiqPay</span>
+            </label>
+          </div>
+        </div>
+        <div class="payment-block-checkbox comment">
+          <label for="comment">
+            <input id="comment" name="comment" type="checkbox" (change)="commentChange()" >
+            <span>Коментар / промокод / інше</span>
+          </label>
+        </div>
+        <div class="payment-block-textarea" *ngIf="comment">
+          <textarea name="comment" maxlength="499" placeholder="Ваш коментар" formControlName="comment"></textarea>
+        </div>
+      </div>
+      <div class="orders-confirm">
+        <div class="orders-confirm-wrap">
+          <h5 class="orders-title title">Сума:</h5>
+          <h5 class="orders-title title"> {{ total }} грн</h5>
+        </div>
+        <button type="submit" class="orders-confirm-btn" (click)="checkout()">оформити замовлення</button>
+      </div>
+    </div>
+  </form>
+</div>
