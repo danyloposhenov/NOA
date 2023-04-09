@@ -1,0 +1,78 @@
+@import "../../../app/shared/styles/variables";
+@import "../../../app/shared/styles/mixins";
+
+.container {
+  @include container(flex, column, 100%, 0 auto, 0 60px);
+  max-width: 1840px;
+  .title {
+    @include title(60px auto, 42px, 700, 1.2em);
+    span {
+      color: $secondColor;
+    }
+  }
+  .row {
+    display: flex;
+    max-width: 1160px;
+    margin: 0 auto;
+    .info {
+      width: 50%;
+      margin-right: 20px;
+      padding: 0 15px;
+      h3 {
+        @include title(0 0 15px, 34px, 500, 1.2em);
+      }
+      p {
+        @include title(0 0 5px, 18px, 400, 1.5em);
+        color: $thirdColor;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1300px) {
+  .container {
+    padding: 0 30px;
+    .row {
+      max-width: 950px;
+      font-size: 16px;
+    }
+  }
+}
+
+@media all and (max-width: 991px) {
+  .container {
+    .title {
+      margin: 30px auto;
+      font-size: 34px;
+    }
+    .row {
+      max-width: 600px;
+      justify-content: center;
+      .info {
+        h3 {
+          font-size: 26px;
+        }
+        width: 100%;
+        margin-right: 0;
+      }
+      .image {
+        display: none;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .container {
+    max-width: 360px;
+    .row {
+      max-width: 400px;
+      .info {
+        font-size: 14px;
+        h3 {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}

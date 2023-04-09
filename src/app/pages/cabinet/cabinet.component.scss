@@ -1,0 +1,74 @@
+@import "../../../app/shared/styles/variables";
+@import "../../../app/shared/styles/mixins";
+
+.container {
+  @include container(flex, column, 100%, 0 auto, 0 60px);
+  max-width: 1840px;
+  .menu {
+    position: relative;
+    margin: 30px 0;
+    text-align: center;
+    &-list {
+      display: inline-flex;
+      flex-wrap: wrap;
+      padding: 3px;
+      background: #F5F5F5;
+      border-radius: 6px;
+      &-item {
+        a {
+          position: relative;
+          display: inline-block;
+          margin-right: 5px;
+          padding: 15px 24px;
+          font-size: 14px;
+          font-weight: 500;
+          text-transform: uppercase;
+          text-decoration: none;
+          color: $thirdColor;
+          transition: 0.25s;
+          &:active {
+            transform: translateY(3px);
+          }
+          &:hover {
+            color: $mainColor;
+            border-radius: 6px;
+            background-color: $secondColor;
+          }
+          &.route-active {
+            color: $mainColor;
+            border-radius: 6px;
+            background-color: $secondColor;
+          }
+        }
+      }
+    }
+  }
+  .info {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+    max-width: 510px;
+    .menu-list-item {
+      a {
+        padding: 10px 15px;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 510px) {
+  .container {
+    max-width: 360px;
+    .menu-list-item {
+      a {
+        padding: 7px 12px;
+        font-size: 12px;
+      }
+    }
+  }
+}

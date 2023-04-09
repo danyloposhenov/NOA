@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="close" mat-dialog-close >
+    <img class="white-close"
+      src="https://firebasestorage.googleapis.com/v0/b/noa-delivery.appspot.com/o/static%20image%2Fclose-white.svg?alt=media&token=4a61eaf9-1de3-4d73-b051-f5ebb1e3a800" >
+    <img class="blue-close" src="https://firebasestorage.googleapis.com/v0/b/noa-delivery.appspot.com/o/static%20image%2Fclose-blue.svg?alt=media&token=16647ff7-6420-4141-a424-87fef6cdffcc" >
+  </div>
+  <h2>{{ isLogin ? 'Вхід в кабінет' : 'Зареєструватись' }}</h2>
+  <ng-container *ngIf="isLogin">
+    <form [formGroup]="authForm">
+      <div class="box">
+        <mat-form-field appearance="outline" id="email" class="box-input">
+          <mat-label>Ваш email</mat-label>
+          <input matInput type="text" formControlName="email">
+        </mat-form-field>
+      </div>
+      <div class="box">
+        <mat-form-field  appearance="outline" class="box-input">
+          <mat-label>Пароль</mat-label>
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" id="btn" type="button" (click)="loginUser()" mat-dialog-close>
+        Увійти в кабінет
+      </button>
+      <div class="box">
+        <a class="box-link-password">Забули пароль?</a>
+        <a class="box-link-register" (click)="changeIsLogin()">Зареєструватись</a>
+      </div>
+    </form>
+  </ng-container>
+  <ng-container *ngIf="!isLogin">
+    <form [formGroup]="registerForm">
+      <div class="box">
+        <mat-form-field appearance="outline" class="box-input-half">
+          <mat-label>Ваше ім'я </mat-label>
+          <input matInput type="text" formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="box-input-half">
+          <mat-label>Ваше прізвище</mat-label>
+          <input matInput type="text" formControlName="lastName">
+        </mat-form-field>
+      </div>
+      <div class="box">
+        <mat-form-field appearance="outline" class="box-input">
+          <mat-label>Ваш телефон</mat-label>
+          <input matInput type="tel" formControlName="phoneNumber">
+        </mat-form-field>
+      </div>
+      <div class="box">
+        <mat-form-field appearance="outline" class="box-input">
+          <mat-label>Ваш email</mat-label>
+          <input matInput type="text" formControlName="email">
+        </mat-form-field>
+      </div>
+      <div class="box">
+        <mat-form-field appearance="outline" class="box-input-half">
+          <mat-label>Пароль</mat-label>
+          <input (input)="checkConfirmedPassword()" matInput type="password" formControlName="password">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="box-input-half">
+          <mat-label>Повторіть пароль</mat-label>
+          <input (input)="checkConfirmedPassword()" matInput type="password" formControlName="confirmedPassword">
+          <mat-error *ngIf="checkVisibilityError('confirmedPassword', 'matchError')">Confirmed password is
+            required</mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" id="btn" type="button" (click)="registerUser()"
+        mat-dialog-close>Зареєструватись</button>
+      <p>
+        <span>Вже зареєстровані?</span>
+        <a class="box-link-logup" (click)="changeIsLogin()">Увійти</a>
+      </p>
+    </form>
+  </ng-container>
+</div>
