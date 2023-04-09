@@ -1,0 +1,15 @@
+@mixin container ($d, $fd, $w, $m, $p) {
+  display: $d;
+  flex-direction: $fd;
+  width: $w;
+  margin: $m;
+  padding: $p;
+}
+
+@mixin title ($m, $fs, $fw, $ln) {
+  margin: $m;
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $ln;
+}
+

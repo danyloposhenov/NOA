@@ -1,27 +1,24 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
+@import "../../shared/styles/fonts";
+
+
 .title {
+  display: flex;
+  justify-content: space-between;
   height: 90px;
   padding: 40px 90px 20px 50px;
   h4 {
-    position: relative;
-    display: inline-block;
+    @include title(0, 26px, 700, auto);
     width: 50%;
-    vertical-align: middle;
-    line-height: 1.2em;
-    font-size: 26px;
-    font-weight: 700;
-    color: #2D2C2C;
   }
   &-reduce {
     width: 40%;
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    text-align: right;
+    outline: none;
+    border: none;
     background: none;
     font-size: 12px;
     text-transform: uppercase;
-    outline: none;
-    border: none;
     transition: all 0.3s;
     cursor: pointer;
   }
@@ -29,14 +26,13 @@
 
 .container {
   font-size: 16px;
-  color: #2D2C2C;
   .basket {
+    display: flex;
+    flex-direction: column;
     max-height: 100%;
     height: calc(100vh - 192px);
     overflow: auto;
     padding: 0 50px;
-    display: flex;
-    flex-direction: column;
     &-item {
       position: relative;
       display: flex;
@@ -47,13 +43,13 @@
       border: 1px solid #ececec;
       border-radius: 6px;
       &-image {
-        width: 124px;
-        height: 124px;
-        max-height: 124px;
         display: flex;
         align-items: center;
         justify-content: center;
         align-self: flex-start;
+        width: 124px;
+        height: 124px;
+        max-height: 124px;
         outline: none;
         img {
           display: inline-block;
@@ -71,46 +67,44 @@
           overflow: hidden;
           max-height: 3em;
           margin-bottom: 5px;
-          line-height: 1.3em;
-          font-size: 18px;
-          font-weight: 500;
           outline: none;
           border: none;
-          color: #2D2C2C;
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 1.3em;
         }
         &__controls {
-          max-width: 220px;
           display: flex;
           justify-content: space-between;
           align-items: center;
+          max-width: 220px;
           div {
             display: inline-flex;
             align-items: center;
-            color: #181818;
             font-size: 14px;
+            color: #181818;
             button {
               position: relative;
               width: 30px;
               height: 30px;
-              background-color: #F5F5F5;
-              border-radius: 5px;
               outline: none;
+              border-radius: 5px;
               border: none;
+              background-color: #F5F5F5;
               font-size: 18px;
               font-weight: 700;
               color: #2D2C2C;
-              cursor: pointer;
               transition: 0.25s;
+              cursor: pointer;
             }
             input {
               width: 50px;
               height: 26px;
-              text-align: center;
               background: none;
               border: none;
               font-size: 16px;
               font-weight: 500;
-              color: #2D2C2C;
+              text-align: center;
             }
           }
         }
@@ -127,14 +121,14 @@
         position: absolute;
         right: 10px;
         top: 10px;
+        z-index: 2;
         width: 40px;
         height: 40px;
-        line-height: 40px;
-        text-align: center;
         outline: none;
         border: none;
         font-size: 20px;
-        z-index: 2;
+        line-height: 40px;
+        text-align: center;
         transition: 0.25s;
         cursor: pointer;
         &::before {
@@ -144,10 +138,10 @@
     }
   }
   .order {
-    padding: 20px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 20px 50px;
     border-top: 2px solid #2d7d7d;
     &-amount {
       span {
@@ -158,21 +152,9 @@
     &-submit {
       display: inline-block;
       margin-left: 10px;
-      padding: 18px 30px;
-      vertical-align: bottom;
-      text-align: center;
-      line-height: 20px;
-      background: #2d7d7d;
-      border: 2px solid #2d7d7d;
-      border-radius: 6px;
       font-size: 14px;
-      font-weight: 700;
-      letter-spacing: .15em;
-      text-transform: uppercase;
       text-decoration: none;
-      color: #FFF;
-      transition: 0.3s;
-      cursor: pointer;
+      vertical-align: bottom;
     }
   }
 }
@@ -181,16 +163,16 @@
   position: absolute;
   right: 50px;
   top: 35px;
+  z-index: 2;
   width: 40px;
   height: 40px;
-  line-height: 40px;
-  text-align: center;
-  background: none;
   outline: none;
   border: none;
+  background: none;
   font-size: 20px;
+  line-height: 40px;
+  text-align: center;
   transition: 0.25s;
-  z-index: 2;
   cursor: pointer;
   &::before {
     content: "\02715";
@@ -198,5 +180,135 @@
     font-weight: 700;
     color: #2D2C2C;
     transition: all 0.3s;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .title {
+    padding-top: 20px;
+    height: 60px;
+    button {
+      height: 100%;
+    }
+  }
+  .close {
+    top: 8px;
+  }
+  .container {
+    .basket {
+      padding: 0 30px;
+      &-item {
+        padding: 15px;
+        &-image {
+          width: 100px;
+          height: 100px;
+          max-height: 100px;
+        }
+        &-desc {
+          width: 100%;
+          padding: 15px 15px 15px 24px;
+          &__name {
+            font-size: 16px;
+          }
+          &__controls {
+            max-width: 180px;
+            div {
+              button {
+                width: 22px;
+                height: 22px;
+                font-size: 16px;
+              }
+              input {
+                width: 50px;
+                height: 22px;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+        &-reduce {
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 510px) {
+  .title {
+    padding-top: 20px;
+    padding-left: 10px;
+    h4 {
+      width: auto;
+      font-size: 22px;
+    }
+    button {
+      width: auto;
+      padding-top: 6px;
+    }
+  }
+  .close {
+    right: 10px;
+    top: 10px;
+  }
+  .container {
+    .basket {
+      padding: 0 10px;
+      &-item {
+        padding: 10px;
+        &-image {
+          width: 90px;
+          height: 90px;
+          max-height: 90px;
+        }
+        &-desc {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 100%;
+          padding: 8px 8px 8px 14px;
+          &__name {
+            font-size: 14px;
+          }
+          &__controls {
+            max-width: 150px;
+            div {
+              button {
+                width: 20px;
+                height: 20px;
+              }
+              input {
+                width: 50px;
+                height: 20px;
+              }
+            }
+          }
+        }
+        &-reduce {
+          width: 25px;
+          height: 25px;
+          line-height: 25px;
+        }
+      }
+    }
+    .order {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px 20px;
+      &-amount {
+        width: 100%;
+        margin-left: 10px;
+        span {
+          font-size: 18px;
+        }
+      }
+      &-submit {
+        width: 100%;
+        margin-top: 10px;
+        padding: 10px 20px;
+      }
+    }
   }
 }

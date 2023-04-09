@@ -1,36 +1,45 @@
 @import "../../../app/shared/styles/variables";
+@import "../../../app/shared/styles/mixins";
 
 .container {
-  width: 100%;
+  @include container(flex, column, 100%, 0 auto, 0 60px);
   max-width: 1840px;
-  padding-left: 60px;
-  padding-right: 60px;
-  color: #2D2C2C;
+  .title {
+    @include title(60px auto, 42px, 700, 1.2em);
+    span {
+      color: $secondColor;
+    }
+  }
+  h3 {
+    font-size: 46px;
+  }
+  h4 {
+    font-size: 26px;
+  }
+  h5 {
+    font-size: 22px;
+  }
+  p {
+    font-size: 16px;
+  }
+  li {
+    font-size: 16px;
+  }
 }
 
 .row {
   display: flex;
   flex-wrap: wrap;
-}
-
-.title {
-  width: 100%;
-  margin: 40px 0;
-  text-align: center;
-  font-size: 42px;
-  font-weight: 700;
-  line-height: 1.2em;
-  span {
-    color: $secondColor;
-  }
+  justify-content: center;
 }
 
 .info {
   &-map {
-    flex: 0 0 50%;
-    max-width: 50%;
     display: flex;
     flex-direction: column;
+    flex: 0 0 40%;
+    width: 100%;
+    margin-right: 20px;
     &-box {
       display: flex;
       width: 100%;
@@ -43,12 +52,8 @@
       &__desc {
         width: 100%;
         h4 {
-          margin-bottom: 15px;
-          line-height: 1.2em;
-          font-size: 26px;
-          font-weight: 500;
+          @include title(0 0 15px, auto, 500, 1.2em);
           color: #599921;
-          letter-spacing: 0.03em;
         }
         ul {
           padding-left: 5px;
@@ -57,9 +62,8 @@
             position: relative;
             padding-left: 25px;
             margin-bottom: 10px;
+            color: $thirdColor;
             line-height: 1.5;
-            color: #6D6D6D;
-            font-size: 16px;
             &::before {
               content: "";
               position: absolute;
@@ -100,11 +104,11 @@
     }
   }
   &-image {
-    flex: 0 0 50%;
-    max-width: 50%;
+    flex: 0 0 45%;
+    width: 100%;
     &-box {
-      width: 700px;
-      height: 450px;
+      width: 600px;
+      height: 400px;
       img {
         width: 100%;
         height: 100%;
@@ -115,30 +119,26 @@
 }
 
 .desc {
-  max-width: 76%;
+  width: 80%;
   margin: 50px auto;
+  color: $thirdColor;
   line-height: 1.5em;
-  color: #6D6D6D;
   h3 {
-    margin-top: 10px;
-    line-height: 1.2em;
-    font-size: 46px;
+    @include title(10px 0 0, auto, 400, 1.2em);
     color: #2D2C2C;
   }
   p {
     line-height: 1.5em;
     font-size: 18px;
-    color: #6d6d6d;
+    color: $thirdColor;
   }
   ul {
-    list-style: none;
     li {
       position: relative;
       padding-left: 25px;
       margin-bottom: 10px;
+      color: $thirdColor;
       line-height: 1.5;
-      font-size: 16px;
-      color: #6D6D6D;
       &::before {
         content: "";
         position: absolute;
@@ -154,11 +154,11 @@
 }
 
 .pay {
-  width: 100%;
-  margin-top: 60px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  width: 100%;
+  margin-top: 60px;
   &-box {
     width: 33%;
     display: flex;
@@ -170,17 +170,141 @@
     &-info {
       width: 310px;
       h5 {
-        margin-bottom: 15px;
-        line-height: 1.3em;
-        font-size: 22px;
-        font-weight: 500;
+        @include title(0 0 15px, auto, 500, 1.3em);
         letter-spacing: 0.03em;
       }
       p {
         line-height: 1.5em;
-        font-size: 16px;
         letter-spacing: 0.03em;
+        color: $thirdColor;
       }
+    }
+  }
+}
+
+@media all and (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+    h3 {
+      font-size: 40px;
+    }
+    .row {
+      flex-direction: column;
+      font-size: 16px;
+    }
+    .info {
+      &-map {
+        flex: 0 0 100%;
+        order: 2;
+        margin-right: 0;
+      }
+      &-image {
+        flex: 0 0 100%;
+        order: 1;
+        margin-bottom: 30px;
+        &-box {
+          width: auto;
+          height: auto;
+        }
+      }
+    }
+    .desc {
+      width: 100%;
+      margin: 20px auto;
+    }
+    .pay {
+      margin-top: 30px;
+      &-box {
+        width: 50%;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 991px) {
+  .container {
+    max-width: 738px;
+    h3 {
+      font-size: 38px;
+    }
+    p {
+      font-size: 16px;
+    }
+    .title {
+      margin: 10px auto 30px;
+      font-size: 34px;
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .container {
+    max-width: 480px;
+    padding: 0 30px;
+    .title {
+      font-size: 26px;
+    }
+    h4 {
+      font-size: 20px;
+    }
+    li {
+      font-size: 14px;
+    }
+    .info {
+      &-map {
+        &-box {
+          margin-bottom: 15px;
+          &__image {
+            position: relative;
+            top: 30px;
+            width: 75px;
+            height: 75px;
+            margin-right: 20px;
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+      &-image {
+        &-box {
+          height: auto;
+          width: auto;
+          margin: 0 auto;
+        }
+      }
+    }
+    .pay {
+      margin-top: 10px;
+      &-box {
+        width: 100%;
+        &-icon {
+          img {
+            width: 60px;
+            height: 40px;
+          }
+        }
+        &-info {
+          width: 240px;
+          h5, p {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 510px) {
+  .container {
+    max-width: 360px;
+    padding: 0 15px;
+    h3 {
+      font-size: 24px;
+    }
+    p, li {
+      font-size: 14px;
     }
   }
 }

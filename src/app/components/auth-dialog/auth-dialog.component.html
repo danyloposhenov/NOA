@@ -8,13 +8,13 @@
   <ng-container *ngIf="isLogin">
     <form [formGroup]="authForm">
       <div class="box">
-        <mat-form-field appearance="outline" class="box-input">
+        <mat-form-field appearance="outline" id="email" class="box-input">
           <mat-label>Ваш email</mat-label>
           <input matInput type="text" formControlName="email">
         </mat-form-field>
       </div>
       <div class="box">
-        <mat-form-field appearance="outline" class="box-input">
+        <mat-form-field  appearance="outline" class="box-input">
           <mat-label>Пароль</mat-label>
           <input matInput type="password" formControlName="password">
         </mat-form-field>

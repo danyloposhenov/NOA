@@ -66,14 +66,16 @@ export class CheckoutComponent {
   }
 
   unloadUser(): void {
-    let user: IRegister = JSON.parse(localStorage.getItem('currentUser') as string);
-    if (localStorage.getItem('currentUser') && user.role === ROLE.USER) {
-      this.userForm.patchValue({
-        firstName: user.firstName,
-        lastName: user.lastName,
-        phoneNumber: user.phoneNumber,
-        email: user.email,
-      });
+    if(localStorage.getItem('currentUser')) {
+      let user: IRegister = JSON.parse(localStorage.getItem('currentUser') as string);
+      if (localStorage.getItem('currentUser') && user.role === ROLE.USER) {
+        this.userForm.patchValue({
+          firstName: user.firstName,
+          lastName: user.lastName,
+          phoneNumber: user.phoneNumber,
+          email: user.email,
+        });
+      }
     }
   }
 

@@ -15,6 +15,10 @@
       <div class="box">
         <div class="image">
           <img [src]="currentProduct.imagePath" alt="product">
+          <div class="image-favor">
+            <button [ngClass]="{'active': currentProduct.favorite}" (click)="addFavorite(currentProduct)"></button>
+          </div>
+          <div class="image-culinasia" *ngIf="currentProduct.extraPath">Culinasia menu</div>
         </div>
       </div>
       <div class="box">
@@ -30,7 +34,10 @@
             </div>
             <p class="info-price"><span> {{ currentProduct.price }} </span> грн</p>
           </div>
-          <button class="info-order" (click)="addToBasket(currentProduct)">додати в кошик</button>
+          <div>
+            <button class="info-order button" (click)="addToBasket(currentProduct)">додати в кошик</button>
+            <button class="info-order fast button" (click)="fastOrder(currentProduct)">швидке замовлення</button>
+          </div>
         </div>
       </div>
     </div>

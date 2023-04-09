@@ -24,8 +24,8 @@ export class ProductComponent {
   public currentID!: string;
 
   constructor(
-    private categoryServive: CategoryService,
-    private productServive: ProductService,
+    private categoryService: CategoryService,
+    private productService: ProductService,
     private scroll: ScrollService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -47,7 +47,7 @@ export class ProductComponent {
 
   initCategory(): void {
     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    this.categoryServive.getAll().subscribe(data => {
+    this.categoryService.getAll().subscribe(data => {
       this.categoryProducts = data as ICategoryResponse[];
       if (categoryName == 'thai-wok' || categoryName == 'thai-lava-grill' || categoryName == 'thai-satay') {
         this.categoryProducts = this.categoryProducts
@@ -61,7 +61,7 @@ export class ProductComponent {
 
   LoadProducts(): void {
     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    this.productServive.getAll().subscribe(data => {
+    this.productService.getAll().subscribe(data => {
       if (categoryName == 'culinasia-menu' || categoryName == null) {
         this.userProducts = data
           .filter(prod => prod["extraPath"] == true) as IProductResponse[];

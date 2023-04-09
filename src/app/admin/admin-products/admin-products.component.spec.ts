@@ -34,4 +34,31 @@ describe('AdminProductsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should set editStatus, isUploaded, list, and currentProductID correctly', () => {
+    const product = {
+      id: '123',
+      category: {
+        id: 'sds',
+        name: 'qqq',
+        path: 'string',
+        imagePath: 'qqq'
+      },
+      name: 'Pizza',
+      path: 'food-pizza',
+      description: 'A delicious pizza',
+      weight: '500',
+      price: 10,
+      favorite: true,
+      extraPath: '1',
+      count: 5,
+      imagePath: 'https://example.com/pizza.jpg'
+    };
+
+    component.editProduct(product);
+
+    expect(component.editStatus).toBeTrue();
+    expect(component.isUploaded).toBeTrue();
+    expect(component.list).toBeFalse();
+    expect(component.currentProductID).toBe('123');
+  });
 });

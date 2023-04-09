@@ -1,14 +1,14 @@
 @import "../../../app/shared/styles/variables";
+@import "../../../app/shared/styles/mixins";
 
 .container {
-  width: 100%;
+  @include container(flex, column, 100%, 0 auto, 0 60px);
   max-width: 1840px;
-  padding: 60px 60px 0;
-  color: #2D2C2C;
   .menu {
     position: relative;
-    text-align: center;
+    margin-top: 60px;
     margin-bottom: 30px;
+    text-align: center;
     &-list {
       display: inline-flex;
       flex-wrap: wrap;
@@ -20,24 +20,24 @@
           display: inline-block;
           margin-right: 5px;
           padding: 15px 24px;
+          outline: none;
           font-size: 14px;
           font-weight: 500;
           text-decoration: none;
           text-transform: uppercase;
-          outline: none;
-          color: #6D6D6D;
+          color: $thirdColor;
           transition: all 0.3s;
           &:active {
             transform: translateY(3px);
           }
           &:hover {
             color: $mainColor;
-            background-color: #2d7d7d;
+            background-color: $secondColor;
             border-radius: 6px;
           }
           &.route-active {
             color: $mainColor;
-            background-color: #2d7d7d;
+            background-color: $secondColor;
             border-radius: 6px;
           }
         }
@@ -45,17 +45,17 @@
     }
   }
   .sort {
-    text-align: center;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    list-style: none;
+    text-align: center;
     li {
       position: relative;
       height: 100%;
       margin-right: 20px;
-      cursor: pointer;
       transition: 0.25s;
+      cursor: pointer;
       &:active {
         transform: translateY(3px);
       }
@@ -63,13 +63,14 @@
         content: '';
         position: relative;
         display: inline-block;
-        vertical-align: middle;
-        margin-top: 1px;
-        margin-right: 10px;
         width: 20px;
         height: 20px;
+        margin-top: 1px;
+        margin-right: 10px;
         border: 1px solid #ECECEC;
         border-radius: 5px;
+        vertical-align: middle;
+
       }
       &::after {
         content: '';
@@ -78,7 +79,7 @@
         top: 6px;
         width: 12px;
         height: 12px;
-        background-color: #2d7d7d;
+        background-color: $secondColor;
         border-radius: 3px;
         transition: 0.25s;
         transform: scale(0);
@@ -94,16 +95,16 @@
         margin-right: 5px;
       }
       .choice {
-        width: 150px;
-        height: 40px;
-        padding: 0 12px;
         position: relative;
         display: inline-flex;
         align-items: center;
         justify-content: flex-end;
+        width: 150px;
+        height: 40px;
+        padding: 0 12px;
         border: 1px solid #ececec;
         border-radius: 5px;
-        background-color: #fff;
+        background-color: $mainColor;
         transition: 0.3s ease;
         z-index: 1;
         &.show {
@@ -132,17 +133,16 @@
           content: "\2193";
         }
         &-name {
-          width: 100%;
-          height: 100%;
           position: absolute;
           left: 0;
           top: 0;
-          padding-left: 12px;
+          z-index: 2;
           display: flex;
           align-items: center;
-          color: #2d2c2c;
+          width: 100%;
+          height: 100%;
+          padding-left: 12px;
           cursor: pointer;
-          z-index: 2;
           .icon-arrow-up {
             color: $secondColor;
             &::before {
@@ -158,22 +158,22 @@
         }
         &-wrap {
           position: absolute;
-          z-index: 2;
           top: 100%;
           left: 0;
-          background-color: #fff;
+          z-index: 2;
           width: 100%;
           border: 1px solid #ececec;
           border-radius: 5px;
+          background-color: $mainColor;
           opacity: 0;
           visibility: hidden;
           transform: translateY(20px);
         }
         &-var {
-          height: 40px;
-          padding: 0 12px;
           display: flex;
           align-items: center;
+          height: 40px;
+          padding: 0 12px;
           color: rgba(0, 0, 0, 0.64);
           cursor: pointer;
         }
@@ -181,34 +181,34 @@
     }
   }
   .products {
-    width: 100%;
-    margin-top: 40px;
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
+    margin-top: 40px;
     &-item {
       position: relative;
+      display: flex;
+      flex-direction: column;
       flex: 0 0 25%;
       max-width: 25%;
       margin-bottom: 45px;
       padding: 15px;
-      display: flex;
-      flex-direction: column;
       transition: 0.5s;
       &:hover {
         box-shadow: 0 0 6px 6px rgba(0,0,0,.02);
       }
       &-favor {
-        width: 23px;
-        height: 20px;
         position: absolute;
         top: 10px;
         right: 10px;
+        width: 23px;
+        height: 20px;
         button {
           width: 100%;
           height: 100%;
-          background: none;
           outline: none;
           border: none;
+          background: none;
           background-image: url('https://firebasestorage.googleapis.com/v0/b/monosushi-6a750.appspot.com/o/static%2Flove-empty-icon.svg?alt=media&token=1178f342-e4e6-4fb1-a4a7-f19b6b926dd6');
           background-repeat: no-repeat;
           background-size: cover;
@@ -225,17 +225,16 @@
         top: 10px;
         left: 10px;
         padding: 8px 10px;
+        border-radius: 3px;
         background-color: #ff6400;
         font-size: 10px;
-        color: $mainColor;
-        border-radius: 3px;
+        font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        font-weight: 700;
+        color: $mainColor;
       }
       &-image {
         width: 100%;
-        height: 400px;
         text-align: center;
         cursor: pointer;
         img {
@@ -245,9 +244,9 @@
         }
       }
       &-title {
-        height: 50px;
         display: flex;
         justify-content: space-between;
+        height: 50px;
         margin-top: 10px;
         font-weight: 600;
         h3 {
@@ -260,13 +259,13 @@
         height: 66px;
         font-size: 15px;
         line-height: 1.5;
-        color: #6D6D6D;
+        color: $thirdColor;
       }
       &-controls {
-        margin-top: 10px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-top: 10px;
         &__count {
           display: inline-flex;
           align-items: center;
@@ -275,13 +274,12 @@
           button {
             width: 30px;
             height: 30px;
-            background-color: #F5F5F5;
-            border: none;
             outline: none;
+            border: none;
             border-radius: 5px;
+            background-color: #F5F5F5;
             font-size: 18px;
             font-weight: 700;
-            color: #2D2C2C;
             transition: 0.25s;
             &:hover {
               background-color: $secondColor;
@@ -294,34 +292,18 @@
           input {
             width: 50px;
             height: 26px;
-            text-align: center;
             border: none;
             outline: none;
             font-size: 16px;
             font-weight: 500;
-            color: #2D2C2C;
+            text-align: center;
           }
         }
         &__order {
           padding: 10px 15px;
-          line-height: 20px;
-          text-align: center;
-          background: #2d7d7d;
-          border: 2px solid #2d7d7d;
-          border-radius: 6px;
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: .15em;
-          text-transform: uppercase;
-          text-decoration: none;
-          color: #FFF;
-          transition: 0.3s;
           &:hover {
             background-color: transparent;
             color: $secondColor;
-          }
-          &:active {
-            transform: translateY(3px);
           }
         }
       }
@@ -329,3 +311,77 @@
   }
 }
 
+@media all and (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+    padding-right: 15px;
+    padding-left: 15px;
+    .products-item {
+      flex: 0 1 33.333%;
+      max-width: 33.333%;
+    }
+  }
+}
+
+@media all and (max-width: 991px) {
+  .container {
+    max-width: 750px;
+    .menu-list-item {
+      a {
+        padding: 10px 20px;
+      }
+    }
+    .products-item {
+      flex: 0 1 50%;
+      max-width: 50%;
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .container {
+    max-width: 510px;
+    .menu-list-item {
+      a {
+        padding: 10px 15px;
+      }
+    }
+    .products-item {
+      flex: 0 1 100%;
+      max-width: 100%;
+    }
+    .sort {
+      font-size: 14px;
+      &-option {
+      align-items: flex-start;
+      flex-direction: column;
+      width: 100%;
+      }
+      p {
+        margin: 10px 0;
+      }
+      .choice {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 510px) {
+  .container {
+    max-width: 360px;
+    .menu {
+        margin-top: 30px
+    }
+    .menu-list-item {
+      a {
+        padding: 7px 12px;
+        font-size: 12px;
+      }
+    }
+    .products-item-controls__order {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+  }
+}

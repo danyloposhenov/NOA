@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
@@ -12,16 +12,33 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 export class ProductInfoComponent {
 
   public currentProduct!: IProductResponse;
+  public userProducts!: IProductResponse[];
 
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(response => {
       this.currentProduct = response["productInfo"];
+      this.updateFavoriteProduct();
+    })
+  }
+
+  LoadProducts(): void {
+    const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
+    this.productService.getAll().subscribe(data => {
+      if (categoryName == 'culinasia-menu' || categoryName == null) {
+        this.userProducts = data
+          .filter(prod => prod["extraPath"] == true) as IProductResponse[];
+      } else {
+        this.userProducts = data
+          .filter(prod => prod["category"].path == categoryName) as IProductResponse[];
+      }
+      this.updateFavoriteProduct();
     })
   }
 
@@ -58,4 +75,56 @@ export class ProductInfoComponent {
     this.orderService.changeBasket.next(true);
   }
 
+  fastOrder(product: IProductResponse): void {
+    this.addToBasket(product);
+    setTimeout(() => { this.router.navigate(['/checkout']) }, 500);
+  }
+
+  addFavorite(product: IProductResponse): void {
+    let prod: Array<IProductResponse> = [];
+    product.favorite = true;
+    if (localStorage.getItem('currentUser')) {
+      if (localStorage.getItem('favoritesForCurrentUser')) {
+        prod = JSON.parse(localStorage.getItem('favoritesForCurrentUser') as string);
+        if (prod.some(prod => prod.id as string === product.id)) {
+          const index = prod.findIndex(prod => prod.id === product.id);
+          product.favorite = false;
+          prod.splice(index, 1);
+        } else {
+          prod.push(product);
+        }
+      } else {
+        prod.push(product);
+      }
+      localStorage.setItem('favoritesForCurrentUser', JSON.stringify(prod));
+    } else {
+      if (localStorage.length > 0 && localStorage.getItem('favorites')) {
+        prod = JSON.parse(localStorage.getItem('favorites') as string);
+        if (prod.some(prod => prod.id as string === product.id)) {
+          const index = prod.findIndex(prod => prod.id === product.id);
+          product.favorite = false;
+          prod.splice(index, 1);
+        } else {
+          prod.push(product);
+        }
+      } else {
+        prod.push(product);
+      }
+      localStorage.setItem('favorites', JSON.stringify(prod));
+    }
+  }
+
+  updateFavoriteProduct(): void {
+    let prod: Array<IProductResponse> = [];
+    if (localStorage.getItem('currentUser') && localStorage.getItem('favoritesForCurrentUser')) {
+      prod = JSON.parse(localStorage.getItem('favoritesForCurrentUser') as string);
+    } else if (localStorage.getItem('favorites') && !localStorage.getItem('currentUser')) {
+      prod = JSON.parse(localStorage.getItem('favorites') as string);
+    } else {
+      this.userProducts.map(elem => elem.favorite = false)
+    }
+    if (prod.some(elem => elem.id == this.currentProduct.id)) {
+      this.currentProduct.favorite = true;
+    }
+  }
 }

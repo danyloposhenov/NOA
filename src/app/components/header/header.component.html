@@ -7,10 +7,10 @@
   <div class="header-menu">
     <ul>
       <li>
-        <a>Меню</a>
-        <ul class="menu-category">
+        <a (click)="isMenu = !isMenu">Меню</a>
+        <ul class="menu-category" *ngIf="isMenu">
           <li class="menu-category-item" *ngFor="let category of categoryProducts">
-            <a [routerLink]="[ '/product/'+category.path ]" >
+            <a [routerLink]="[ '/product/'+category.path ]" (click)="isMenu = !isMenu">
               <div class="menu-category-item__icon">
                 <img [src]="category.imagePath" alt="category-icon">
               </div>

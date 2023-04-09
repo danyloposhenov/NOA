@@ -1,11 +1,22 @@
 @import "../../../app/shared/styles/variables";
+@import "../../../app/shared/styles/mixins";
 
 .container {
-  width: 100%;
+  @include container(flex, column, 100%, 0 auto, 0 60px);
   max-width: 1840px;
-  padding-left: 60px;
-  padding-right: 60px;
-  color: #2D2C2C;
+  h4 {
+    @include title(0, 26px, 700, 1.2em);
+  }
+  h5 {
+    @include title(0, 20px, 500, 1.3em);
+  }
+  h6 {
+    @include title(0, 18px, 500, auto);
+  }
+  p {
+    font-size: 18px;
+    color: $thirdColor;
+  }
 }
 
 .row {
@@ -14,55 +25,43 @@
 }
 
 .title {
+  @include title(40px 0 0, 42px, 700, 1.2em);
   width: 100%;
-  margin: 40px 0;
   text-align: center;
-  font-size: 42px;
-  font-weight: 700;
-  line-height: 1.2em;
   span {
     color: $secondColor;
   }
 }
 
 .contact {
-  width: 100%;
-  padding: 0 75px;
-  margin-bottom: 85px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  width: 100%;
+  padding: 0 75px;
+  margin-bottom: 85px;
   &-box {
-    width: 31.5%;
-    &:nth-child(4) {
-      margin-top: 20px;
-    }
-    &:nth-child(5) {
-      margin-top: 20px;
-    }
-    &:nth-child(6) {
+    width: 30%;
+    &:nth-child(4), &:nth-child(5), &:nth-child(6) {
       margin-top: 20px;
     }
     &-title {
       margin-bottom: 25px;
-      line-height: 1.3em;
-      font-size: 20px;
-      font-weight: 500;
     }
     &-info {
       width: 100%;
-      background: #F5F5F5;
-      border-radius: 6px;
       padding: 20px 40px;
+      border-radius: 6px;
+      background: #F5F5F5;
     }
     &-desc {
       width: 100%;
       margin-bottom: 10px;
       &__icon {
         display: inline-block;
-        vertical-align: top;
-        margin-right: 30px;
         width: 30px;
+        margin-right: 30px;
+        vertical-align: top;
         text-align: center;
         img {
           position: relative;
@@ -73,12 +72,6 @@
         display: inline-block;
         vertical-align: top;
         line-height: 30px;
-        font-size: 18px;
-        color: #6D6D6D;
-        h6 {
-          font-weight: 500;
-          color: #2D2C2C;
-        }
       }
     }
   }
@@ -86,57 +79,36 @@
 
 .contacts {
   &-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
     padding: 0 75px;
     margin-bottom: 25px;
-    display: flex;
-    justify-content: space-between;
   }
   &-form {
     max-width: 50%;
-    h4 {
-      line-height: 1.2em;
-      font-size: 26px;
-      font-weight: 700;
-    }
     form {
+      @include container(flex, row, 95%, 30px 0 0, 0 10px);
       position: relative;
-      width: 95%;
-      text-align: center;
-      margin-top: 30px;
-      padding-left: 10px;
-      padding-right: 10px;
-      display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      text-align: center;
       input {
         width: 47%;
-        height: 54px;
         margin-bottom: 10px;
-        padding: 0 20px;
-        background-color: #fff;
-        border: 1px solid #ECECEC;
-        border-radius: 3px;
-        font-family: 'Cera Round Pro';
-        font-size: 16px;
-        color: #2D2C2C;
-        transition: 0.25s;
-        text-overflow: ellipsis;
-        &:focus {
-          border: 1px solid #2D2C2C;
-        }
       }
       textarea {
         width: 100%;
         height: 105px;
         padding: 15px 20px 5px;
-        line-height: 18px;
-        background-color: #fff;
         border: 1px solid #ECECEC;
         border-radius: 3px;
+        background-color: #fff;
         font-family: 'Cera Round Pro';
         font-size: 16px;
         color: #2D2C2C;
+        line-height: 18px;
         resize: none;
         transition: 0.25s;
         text-overflow: ellipsis;
@@ -144,16 +116,7 @@
       button {
         width: 50%;
         margin: 20px auto 0;
-        padding: 18px 30px;
-        background: $secondColor;
-        border: 2px solid $secondColor;
-        border-radius: 6px;
         font-size: 14px;
-        font-weight: 700;
-        text-transform: uppercase;
-        color: #FFF;
-        letter-spacing: .15em;
-        transition: 0.3s;
         &:hover {
           background-color: transparent;
           color: $secondColor;
@@ -170,6 +133,151 @@
         width: 100%;
         height: 100%;
         object-fit: contain;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1640px) {
+  .contact {
+    padding: 0 15px;
+    &-box {
+      width: 31.5%;
+      &-info {
+      padding: 20px 20px;
+      }
+    }
+  }
+}
+@media all and (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+    h5 {
+      font-size: 18px;
+    }
+    h6, p {
+      font-size: 16px;
+    }
+  }
+  .contact {
+    margin-bottom: 50px;
+    &-box {
+      width: 45%;
+      margin: 0 2%;
+      margin-bottom: 30px;
+      &:nth-child(4), &:nth-child(5), &:nth-child(6) {
+        margin-top: 0px;
+      }
+      &-info {
+        padding: 15px 10px;
+      }
+    }
+  }
+  .contacts {
+    &-footer {
+      padding: 0 15px;
+    }
+    &-form {
+      max-width: 100%;
+      margin-top: 30px;
+      padding: 0 20px;
+      order: 2;
+      form {
+        width: 100%;
+        margin: 0;
+        margin-top: 20px;
+      }
+    }
+    &-map {
+      max-width: 100%;
+      order: 1;
+    }
+  }
+}
+
+@media all and (max-width: 991px) {
+  .container {
+    max-width: 750px;
+    padding: 0 15px;
+    .title {
+      margin: 30px auto;
+      font-size: 34px;
+    }
+  }
+}
+
+
+@media all and (max-width: 768px) {
+  .container {
+    max-width: 510px;
+    .title {
+      margin: 30px auto;
+      font-size: 26px;
+    }
+  }
+  .contact {
+    padding: 0;
+    &-box {
+      width: 100%;
+      margin-right: 0;
+      margin-left: 0;
+      &-desc__icon {
+        margin-right: 10px;
+      }
+    }
+  }
+  .contacts {
+    &-footer {
+      padding: 0px;
+    }
+    &-form {
+      padding: 0;
+      h4 {
+        font-size: 22px;
+      }
+      form {
+        input {
+          height: 35px;
+          font-size: 14px;
+        }
+        button {
+          width: 100%;
+          padding: 10px 20px;
+        }
+      }
+    }
+    &-map {
+      max-width: 100%;
+      padding: 0;
+      order: 1;
+    }
+  }
+}
+
+@media all and (max-width: 510px) {
+  .container {
+    max-width: 360px;
+    padding: 0 15px;
+    h4 {
+      font-size: 22px;
+    }
+  }
+  .contact {
+    margin-bottom: 20px;
+  }
+  .contacts {
+    &-footer {
+      margin-bottom: 0;
+    }
+    &-form {
+      padding: 0;
+      form {
+        input {
+          width: 100%;
+        }
+        button {
+          margin: 20px 0 0;
+        }
       }
     }
   }

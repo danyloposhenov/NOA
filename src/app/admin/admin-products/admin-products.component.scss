@@ -3,17 +3,16 @@
 
 .container {
   max-width: 100%;
-  color: #2d2d2d;
 }
 
 #open, #add {
   width: 250px;
   height: 60px;
   margin-bottom: 30px;
-  background-color: transparent;
   outline: none;
   border: 2px solid $secondColor;
   border-radius: 10px;
+  background-color: transparent;
   font-weight: 700;
   text-transform: uppercase;
   color: $secondColor;
@@ -45,8 +44,8 @@
       border-bottom: 2px solid lightgrey;
     }
     td {
-      word-wrap: break-word;
       padding-right: 5px;
+      word-wrap: break-word;
       line-height: 1.5;
       vertical-align: middle;
       div {
@@ -105,10 +104,10 @@
     border-radius: 10px;
   }
   &__input {
-    width: 100%;
-    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
     input {
       width: 48%;
       height: 50px;
@@ -167,16 +166,84 @@
       margin-top: 20px;
       width: 150px;
       height: 50px;
-      background-color: transparent;
       border: 2px solid rgb(240, 71, 71);
       border-radius: 10px;
-      text-transform: uppercase;
+      background-color: transparent;
       font-weight: 700;
+      text-transform: uppercase;
       letter-spacing: 1px;
       &:hover {
         background-color: rgb(240, 71, 71);
-        color: white;
+        color: $mainColor;
       }
     }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .table {
+    font-size: 14px;
+    table-layout: auto;
+    &-header {
+      height: 30px;
+    }
+    &-content {
+      td {
+        height: 60px;
+        padding-right: 5px;
+        line-height: 1.3;
+        div {
+          width: 40px;
+          height: 20px;
+        }
+      }
+    }
+  }
+  #edit, #delete {
+    font-size: 14px;
+    &::before {
+      width: 0;
+    }
+  }
+  #open, #add {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+  }
+  .forms {
+    width: 500px;
+  }
+}
+
+@media all and (max-width: 510px) {
+  .list {
+    overflow-x: auto;
+  }
+  .table {
+    font-size: 12px;
+    &-header {
+      height: 20px;
+    }
+    &-content {
+      td {
+        height: 50px;
+        padding-right: 5px;
+        div {
+          width: 30px;
+          height: 15px;
+        }
+      }
+    }
+  }
+  #edit, #delete {
+    font-size: 12px;
+  }
+  #add, #open {
+    width: 100%;
+    height: 40px;
+    font-size: 15px;
+  }
+  .forms {
+    width: auto;
   }
 }

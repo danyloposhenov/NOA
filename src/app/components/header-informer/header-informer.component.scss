@@ -2,8 +2,6 @@
 @import "../../shared/styles/fonts";
 
 .header-informer {
-  width: 100%;
-  padding: 17px 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -13,6 +11,8 @@
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
+  width: 100%;
+  padding: 17px 0;
   background-color: #141414;
   font-size: 14px;
   font-weight: 500;
@@ -37,9 +37,9 @@
     color: $secondColor;
     cursor: pointer;
     &:hover::before {
-      width: 0;
       left: auto;
       right: 0;
+      width: 0;
     }
     &::before {
       content: '';
@@ -50,6 +50,26 @@
       height: 2px;
       background-color: $secondColor;
       transition: all 0.3s;
+    }
+  }
+}
+
+@media all and (max-width: 510px) {
+  .header-informer {
+    padding: 6px 0;
+    span {
+      font-size: 15px;
+      font-weight: 400;
+    }
+    a {
+      display: block;
+      width: 100%;
+      margin-left: -8px;
+      margin-top: 10px;
+      &::before {
+        height: 0;
+        width: 0;
+      }
     }
   }
 }

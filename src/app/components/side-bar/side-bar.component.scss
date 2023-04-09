@@ -1,3 +1,5 @@
+@import "../../../app/shared/styles/variables";
+
 .header-side-bar {
   display: flex;
   flex-direction: column;
@@ -12,33 +14,33 @@
     }
   }
   .menu {
-    width: 100%;
-    margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     row-gap: 10px;
+    width: 100%;
+    margin-top: 40px;
     &-item {
       a {
-        display: inline-block;
         position: relative;
+        display: inline-block;
         margin-bottom: 10px;
         padding: 15px 25px;
         border-radius: 6px;
         font-size: 16px;
         font-weight: 500;
         text-decoration: none;
-        color: #6D6D6D;
         text-transform: uppercase;
+        color: $thirdColor;
         transition: all 0.3s;
         &:hover {
-          background-color: #2d7d7d;
-          color: #ffffff;
+          background-color: $secondColor;
+          color: $mainColor;
         }
       }
       .route-active {
-        background-color: #2d7d7d;
-        color: #ffffff;
+        background-color: $secondColor;
+        color: $mainColor;
       }
     }
   }

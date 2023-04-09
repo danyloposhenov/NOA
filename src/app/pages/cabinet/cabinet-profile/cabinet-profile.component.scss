@@ -1,32 +1,33 @@
 @import "../../../../app/shared/styles/variables";
-
+@import "../../../../app/shared/styles/mixins";
 
 form {
   width: 50%;
   margin: 0 auto;
+  p {
+    font-size: 20px;
+  }
+  input {
+    font-size: 16px;
+  }
 }
 
 .title {
-  margin-bottom: 20px;
-  line-height: 1.3em;
-  font-size: 20px;
-  font-weight: 500;
-  color: #2D2C2C;
+  @include title (0 0 20px, 20px, 500, 1.3em);
   span {
-    width: 28px;
-    height: 28px;
     position: relative;
     top: -2px;
     display: inline-block;
+    width: 28px;
+    height: 28px;
     margin-right: 10px;
     padding-top: 1px;
-    vertical-align: middle;
-    text-align: center;
-    background-color: #2d7d7d;
     border-radius: 6px;
-    font-weight: 500;
+    background-color: $secondColor;
     font-size: 15px;
-    color: #fff;
+    font-weight: 500;
+    color: $mainColor;
+    text-align: center;
   }
 }
 
@@ -43,10 +44,8 @@ form {
       margin-bottom: 10px;
       padding: 5px;
       background-color: $mainColor;
-      color: $secondColor;
       font-weight: 700;
-      font-size: 20px;
-      margin-bottom: 10px;
+      color: $secondColor;
     }
   }
   &-box {
@@ -59,26 +58,8 @@ form {
       padding-left: 10px;
     }
   }
-  &-input {
-    width: 100%;
-    height: 54px;
-    margin-bottom: 20px;
-    padding: 0 20px;
-    background-color: #fff;
-    border: 1px solid #ECECEC;
-    border-radius: 3px;
-    line-height: 51px;
-    font-size: 16px;
-    color: #2D2C2C;
-    transition: 0.25s;
-    text-overflow: ellipsis;
-    &:focus {
-      border: 1px solid #2d7d7d;
-    }
-  }
   &-address {
     padding: 0 10px;
-    flex: 0 0 50%;
     max-width: 50%;
     margin: 5px 0;
     span {
@@ -96,32 +77,16 @@ form {
 
 .cabinet-buttons {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   &__btn {
-    display: inline-block;
-    padding: 18px 30px;
-    background: $secondColor;
-    border: 2px solid $secondColor;
-    border-radius: 6px;
-    text-align: center;
-    line-height: 20px;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: $mainColor;
-    transition: 0.3s;
-    cursor: pointer;
-    &:active {
-      transform: translateY(3px);
-    }
     &.add {
-      color: #2d7d7d;
-      background: #fff;
+      color: $secondColor;
+      background: $mainColor;
     }
     &.save, &.logout {
-      color: #FFF;
-      background: #2d7d7d;
+      color: $mainColor;
+      background: $secondColor;
     }
     &.logout {
       margin: 20px 0px;
@@ -131,6 +96,77 @@ form {
     }
   }
 }
+
+@media all and (max-width: 1200px) {
+  form {
+    width: 80%;
+  }
+}
+
+@media all and (max-width: 991px) {
+  form {
+    width: 100%;
+  }
+  .address {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 768px) {
+  form {
+    p {
+      font-size: 16px;
+    }
+    input {
+      font-size: 14px;
+    }
+  }
+  .profile {
+    &-box, &-address {
+      max-width: 100%;
+      flex: 0 1 100%;
+      padding: 0;
+      margin: 0;
+      &:nth-child(1) {
+        padding-right: 0px;
+      }
+      &:nth-child(2) {
+        padding-left: 0px;
+      }
+    }
+    &-input {
+      height: 35px;
+    }
+  }
+}
+
+@media all and (max-width: 510px) {
+  .menu {
+      margin-top: 30px
+  }
+  .menu-list-item {
+    a {
+      padding: 7px 12px;
+      font-size: 12px;
+    }
+  }
+  .products-item-controls__order {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  .cabinet-buttons {
+    width: 100%;
+    &__btn {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 13px;
+      &:first-child {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
 
 
 

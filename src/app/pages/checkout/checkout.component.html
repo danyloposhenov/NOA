@@ -7,17 +7,17 @@
           <h3 class="profile-title title"><span>1</span>Контактні дані</h3>
           <div class="profile-row">
             <div class="profile-contact">
-              <input type="text" class="profile-input" placeholder="*Ваше ім'я" formControlName="firstName">
+              <input type="text" class="profile-input input" placeholder="*Ваше ім'я" formControlName="firstName">
             </div>
             <div class="profile-contact">
-              <input type="text" class="profile-input" placeholder="*Ваше прізвище" formControlName="lastName">
+              <input type="text" class="profile-input input" placeholder="*Ваше прізвище" formControlName="lastName">
             </div>
           </div>
           <div class="profile-contact">
-            <input type="text" class="profile-input" placeholder="*Ваше номер телефону" formControlName="phoneNumber">
+            <input type="text" class="profile-input input" placeholder="*Ваше номер телефону" formControlName="phoneNumber">
           </div>
           <div class="profile-contact">
-            <input type="text" class="profile-input" placeholder="*Ваш емейл" formControlName="email">
+            <input type="text" class="profile-input input" placeholder="*Ваш емейл" formControlName="email">
           </div>
         </div>
       </div>
@@ -33,25 +33,25 @@
           </div>
           <div class="profile-row">
             <div class="profile-address">
-              <input class="profile-input " type="text" placeholder="*Місто" formControlName="city">
+              <input class="profile-input input" type="text" placeholder="*Місто" formControlName="city">
             </div>
             <div class="profile-address">
-              <input class="profile-input " type="text" placeholder="*Вулиця" formControlName="street">
+              <input class="profile-input input" type="text" placeholder="*Вулиця" formControlName="street">
             </div>
             <div class="profile-address">
-              <input class="profile-input " type="text" placeholder="*№ будинку" formControlName="building">
+              <input class="profile-input input" type="text" placeholder="*№ будинку" formControlName="building">
             </div>
             <div class="profile-address">
-              <input class="profile-input " type="text" placeholder="*Під'їзд" formControlName="entrance">
+              <input class="profile-input input" type="text" placeholder="*Під'їзд" formControlName="entrance">
             </div>
             <div class="profile-address">
-              <input class="profile-input " type="text" placeholder="*Квартира" formControlName="apartment">
+              <input class="profile-input input" type="text" placeholder="*Квартира" formControlName="apartment">
             </div>
             <div class="profile-address">
-              <input class="profile-input " type="text" placeholder="*Поверх" formControlName="floor">
+              <input class="profile-input input" type="text" placeholder="*Поверх" formControlName="floor">
             </div>
             <div class="profile-address">
-              <input class="profile-input " type="text" placeholder="*Домофон" formControlName="intercom">
+              <input class="profile-input input" type="text" placeholder="*Домофон" formControlName="intercom">
             </div>
           </div>
         </div>
@@ -103,7 +103,7 @@
           </div>
           <div class="payment-block-info rest" *ngIf="payment">
             <p>Решта</p>
-            <input type="number" placeholder="Сума" formControlName="restMoney" *ngIf="restMoney">
+            <input class="input" type="number" placeholder="Сума" formControlName="restMoney" *ngIf="restMoney">
             <label for="rest">
               <input id="rest" name="rest" type="checkbox" (change)="restMoney = !restMoney">
               <span>Без решти</span>
@@ -131,7 +131,7 @@
           <h5 class="orders-title title">Сума:</h5>
           <h5 class="orders-title title"> {{ total }} грн</h5>
         </div>
-        <button type="submit" class="orders-confirm-btn" (click)="checkout()">оформити замовлення</button>
+        <button type="submit" class="orders-confirm-btn button" (click)="checkout()">оформити замовлення</button>
       </div>
     </div>
   </form>

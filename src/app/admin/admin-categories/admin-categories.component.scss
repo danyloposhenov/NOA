@@ -1,6 +1,9 @@
 @import "../../../app/shared/styles/variables";
 @import "../../../app/shared/styles/fonts";
 
+.container {
+  width: 100%;
+}
 
 #add, #save {
   width: 250px;
@@ -27,8 +30,8 @@
 .table {
   width: 100%;
   font-size: 19px;
-  text-align: left;
   color: gray;
+  text-align: left;
   &-header {
     width: 100%;
     height: 40px;
@@ -100,12 +103,12 @@
 .forms {
   width: 700px;
   &__input {
-    width: 100%;
-    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
     input {
-      width: 35%;
+      width: 45%;
       height: 50px;
       padding-left: 20px;
       outline: none;
@@ -125,13 +128,13 @@
     resize: none;
   }
   &__file {
+    display: flex;
+    align-items: center;
     width: 100%;
     height: 50px;
     padding-left: 20px;
     border: 2px solid rgb(234, 233, 233);
     border-radius: 10px;
-    display: flex;
-    align-items: center;
   }
   &-download {
     height: 650px;
@@ -146,14 +149,14 @@
       }
     }
     &__btn {
-      margin-top: 20px;
       width: 150px;
       height: 50px;
-      background-color: transparent;
+      margin-top: 20px;
       border: 2px solid rgb(240, 71, 71);
       border-radius: 10px;
-      text-transform: uppercase;
+      background-color: transparent;
       font-weight: 700;
+      text-transform: uppercase;
       letter-spacing: 1px;
       color: rgb(240, 71, 71);
       &:hover {
@@ -164,3 +167,69 @@
   }
 }
 
+@media all and (max-width: 768px) {
+  .table {
+    font-size: 14px;
+    &-header {
+      height: 30px;
+    }
+    &-content {
+      td {
+        height: 60px;
+        padding-right: 5px;
+        line-height: 1.3;
+        div {
+          width: 40px;
+          height: 20px;
+        }
+      }
+    }
+  }
+  #edit, #delete {
+    font-size: 14px;
+    &::before {
+      width: 0;
+    }
+  }
+  #add, #save {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+  }
+  .forms {
+    width: 500px;
+  }
+}
+
+@media all and (max-width: 510px) {
+  .list {
+    overflow-x: auto;
+  }
+  .table {
+    font-size: 12px;
+    &-header {
+      height: 20px;
+    }
+    &-content {
+      td {
+        height: 50px;
+        padding-right: 5px;
+        div {
+          width: 30px;
+          height: 15px;
+        }
+      }
+    }
+  }
+  #edit, #delete {
+    font-size: 12px;
+  }
+  #add, #save {
+    width: 100%;
+    height: 40px;
+    font-size: 15px;
+  }
+  .forms {
+    width: auto;
+  }
+}

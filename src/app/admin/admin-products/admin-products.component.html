@@ -1,47 +1,49 @@
 <div class="container">
   <button id="open" (click)="openList()">Додати Продукт</button>
   <ng-container *ngIf="list">
-    <table class="table">
-      <thead class="table-header">
-        <tr>
-          <th scope="col">№</th>
-          <th scope="col">Категорія</th>
-          <th scope="col">Назва</th>
-          <th scope="col">Інгрідієнти</th>
-          <th scope="col">Вага</th>
-          <th scope="col">Ціна</th>
-          <th scope="col">Картинка</th>
-          <th scope="col">Дії</th>
-        </tr>
-      </thead>
-      <tbody class="table-content">
-        <tr *ngFor="let product of adminProducts">
-          <td> № {{ product.id }} </td>
-          <td> {{ product.category.name }} </td>
-          <td> {{ product.name }} </td>
-          <td> {{ product.description }} </td>
-          <td> {{ product.weight }} </td>
-          <td> {{ product.price }} грн</td>
-          <td>
-            <div>
-              <img [src]="product.imagePath" alt="product-image">
-            </div>
-          </td>
-          <td>
-            <button
-              type="button"
-              id="edit"
-              (click)="editProduct(product)"
-            >Редагувати</button>
-            <button
-              type="button"
-              id="delete"
-              (click)="deleteProduct(product)"
-            >Видалити</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="list">
+      <table class="table">
+        <thead class="table-header">
+          <tr>
+            <th scope="col">№</th>
+            <th scope="col">Категорія</th>
+            <th scope="col">Назва</th>
+            <th scope="col">Інгрідієнти</th>
+            <th scope="col">Вага</th>
+            <th scope="col">Ціна</th>
+            <th scope="col">Картинка</th>
+            <th scope="col">Дії</th>
+          </tr>
+        </thead>
+        <tbody class="table-content">
+          <tr *ngFor="let product of adminProducts">
+            <td> № {{ product.id }} </td>
+            <td> {{ product.category.name }} </td>
+            <td> {{ product.name }} </td>
+            <td> {{ product.description }} </td>
+            <td> {{ product.weight }} </td>
+            <td> {{ product.price }} грн</td>
+            <td>
+              <div>
+                <img [src]="product.imagePath" alt="product-image">
+              </div>
+            </td>
+            <td>
+              <button
+                type="button"
+                id="edit"
+                (click)="editProduct(product)"
+              >Редагувати</button>
+              <button
+                type="button"
+                id="delete"
+                (click)="deleteProduct(product)"
+              >Видалити</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </ng-container>
   <ng-container *ngIf="!list">
     <form [formGroup]="productForm" (ngSubmit)="addProduct()">

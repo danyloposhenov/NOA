@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AuthDialogComponent } from './auth-dialog.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from "../../../environments/environment";
@@ -9,9 +8,9 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AuthDialogComponent', () => {
   let component: AuthDialogComponent;
@@ -46,4 +45,16 @@ describe('AuthDialogComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create a form with email and password fields', () => {
+    const component = fixture.componentInstance;
+    component.initAuthForm();
+    const form = component.authForm;
+
+    expect(form.contains('email')).toBeTruthy();
+    expect(form.contains('password')).toBeTruthy();
+    expect(form.get('email')?.valid).toBeFalsy();
+    expect(form.get('password')?.valid).toBeFalsy();
+  });
+
 });

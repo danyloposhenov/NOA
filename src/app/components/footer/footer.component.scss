@@ -1,21 +1,19 @@
 @import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
 @import "../../shared/styles/fonts";
 
 .footer {
+  @include container(flex, column, auto, 0 auto, 0);
   max-width: 1920px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
   font-size: 16px;
-  color: #252525;
   &-top {
     .container {
+      display: flex;
+      flex-wrap: wrap;
       width: 100%;
       max-width: 1840px;
       padding-left: 60px;
       padding-right: 60px;
-      display: flex;
-      flex-wrap: wrap;
       .box {
         flex: 0 0 17.5%;
         max-width: 17.5%;
@@ -39,11 +37,11 @@
           &-item {
             margin-bottom: 35px;
             a {
+              outline: none;
               font-size: 14px;
               font-weight: 500;
               text-transform: uppercase;
               text-decoration: none;
-              outline: none;
               color: #2D2C2C;
               transition: all 0.3s;
               &:hover {
@@ -57,10 +55,10 @@
           &-item {
             margin-bottom: 35px;
             a {
-              font-size: 14px;
-              color: #6D6D6D;
-              text-decoration: none;
               outline: none;
+              font-size: 14px;
+              text-decoration: none;
+              color: $thirdColor;
               transition: all 0.3s;
               &:hover {
                 color: $secondColor;
@@ -75,26 +73,25 @@
             position: relative;
             margin-right: 15px;
             &__img {
-              width: 26px;
               position: absolute;
               top: 8px;
               left: 11px;
+              width: 26px;
             }
           }
           .location-info {
             width: 100%;
-            color: #2D2C2C;
             &-box:nth-child(1) {
               margin-bottom: 35px;
             }
             h6 {
-              line-height: 1.3em;
               font-size: 16px;
               font-weight: 500;
+              line-height: 1.3em;
             }
             p {
-              line-height: 1.5em;
               font-size: 15px;
+              line-height: 1.5em;
             }
           }
         }
@@ -109,17 +106,17 @@
             position: relative;
             margin-right: 15px;
             &__img {
-              width: 26px;
               position: absolute;
               top: 8px;
               left: 11px;
+              width: 26px;
             }
           }
           a {
+            outline: none;
             font-size: 15px;
             font-weight: 600;
             text-decoration: none;
-            outline: none;
             color: #2D2C2C;
             transition: all 0.3s;
             &:hover {
@@ -127,27 +124,23 @@
             }
           }
           &-info {
-            line-height: 1.5em;
             font-size: 15px;
             font-weight: 500;
-            color: #6D6D6D;
+            color: $thirdColor;
+            line-height: 1.5em;
             span {
               color: #2D2C2C;
             }
           }
         }
         .follow-info {
-          width: 100%;
           display: flex;
           justify-content: flex-end;
           align-items: center;
           column-gap: 5px;
+          width: 100%;
           &__text {
-            margin-right: 15px;
-            line-height: 1.5em;
-            font-size: 15px;
-            font-weight: 500;
-            color: #2D2C2C;
+            @include title(0 10px 0 0, 15px, 500, 1.5em);
           }
           &__facebook {
             display: flex;
@@ -203,19 +196,19 @@
     width: 100%;
     padding: 15px 0 30px;
     .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
       width: 100%;
       max-width: 1840px;
       padding-left: 60px;
       padding-right: 60px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
       .box {
         flex: 0 0 33.333333%;
         max-width: 33.333333%;
         padding-left: 15px;
         p {
-          color: #6D6D6D;
+          color: $thirdColor;
           span {
             color: #252525;
           }
@@ -238,6 +231,104 @@
         &.dev-logo {
           display: flex;
           justify-content: flex-end;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1200px) {
+  .footer-top {
+    .container {
+      .box:nth-child(1), .box:nth-child(2) {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+      .box:nth-child(2) {
+        text-align: right;
+      }
+      .box:nth-child(3), .box:nth-child(4), .box:nth-child(5) {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+        .follow {
+          &-info {
+            p {
+              margin-right: 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .footer-top {
+    .container {
+      padding: 0 45px;
+      .box:nth-child(1), .box:nth-child(2) {
+        flex: 0 0 50%;
+        max-width: 50%;
+        .menu-list-item {
+          margin-bottom: 25px;
+        }
+      }
+      .box:nth-child(2) {
+        text-align: right;
+      }
+      .box:nth-child(3), .box:nth-child(4) {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+      .box:nth-child(5) {
+        flex: 0 0 100%;
+        max-width: 100%;
+        .follow {
+          &-info {
+            justify-content: center;
+            p {
+              margin-right: 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .footer-bottom {
+    .container {
+      padding: 0 45px;
+    }
+  }
+}
+
+@media all and (max-width: 510px) {
+  .footer-top {
+    .container {
+      padding: 0 30px;
+      .box:nth-child(3), .box:nth-child(4) {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      .box {
+        .follow-info {
+          a {
+            width: 35px;
+            height: 35px;
+          }
+        }
+      }
+    }
+  }
+  .footer-bottom {
+    .container {
+      padding: 0 30px;
+      .box {
+        flex: 0 0 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        &.dev-logo {
+          justify-content: center;
         }
       }
     }

@@ -30,4 +30,18 @@ describe('AdminCategoriesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should set editStatus, isUploaded, list, and currentProductID correctly', () => {
+    const category = {
+        id: 'sds',
+        name: 'qqq',
+        path: 'string',
+        imagePath: 'qqq'
+    };
+
+    component.editCategory(category);
+
+    expect(component.editStatus).toBeTrue();
+    expect(component.isUploaded).toBeTrue();
+    expect(component.list).toBeFalse();
+  });
 });

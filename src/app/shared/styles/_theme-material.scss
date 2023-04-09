@@ -55,7 +55,6 @@ $typography-font-family: "Cera Round", sans-serif;
   }
 }
 
-
 @keyframes transformLogin {
   0% {
     opacity: 0;
@@ -73,5 +72,19 @@ $typography-font-family: "Cera Round", sans-serif;
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+@media all and (max-width: 768px) {
+  .basket-dialog .mat-mdc-dialog-container .mdc-dialog__container {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 510px) {
+  .side-bar-dialog .mat-mdc-dialog-container .mdc-dialog__container {
+    max-width: 100%;
+    width: 100%;
   }
 }

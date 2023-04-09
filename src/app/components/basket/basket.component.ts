@@ -12,6 +12,7 @@ import { OrderService } from 'src/app/shared/services/order/order.service';
 export class BasketComponent {
 
   public basket: Array<IProductResponse> = [];
+  public basket2: Array<IProductResponse> = [];
   public total = 0;
 
   constructor(
@@ -27,14 +28,26 @@ export class BasketComponent {
 
   loadBasket(): void {
     if (localStorage.length > 0 && localStorage.getItem('basket')) {
-      this.basket = JSON.parse(localStorage.getItem('basket') as string);
+      let basket = JSON.parse(localStorage.getItem('basket') as string);
+      if(Array.isArray(basket)) {
+        this.basket = basket;
+      } else {
+        let baskets: Array<IProductResponse> = [];
+        baskets.push(basket);
+        this.basket = baskets;
+      }
+      this.getTotalPrice();
     }
-    this.getTotalPrice();
   }
 
   getTotalPrice(): void {
-    this.total = this.basket
-      .reduce((total: number, prod: IProductResponse) => total + prod.count * prod.price, 0)
+    if(Array.isArray(this.basket)) {
+      this.total = this.basket
+        .reduce((total: number, prod: IProductResponse) => total + prod.count * prod.price, 0);
+    } else {
+      this.total = this.basket['count'] * this.basket['price'];
+    }
+
   }
 
   updateBasket(): void {
@@ -55,6 +68,11 @@ export class BasketComponent {
     let basket: Array<IProductResponse> = [];
     if (localStorage.length > 0 && localStorage.getItem('basket')) {
       basket = JSON.parse(localStorage.getItem('basket') as string);
+      if (!Array.isArray(basket)) {
+        let baskets: Array<IProductResponse> = [];
+        baskets.push(basket);
+        basket = baskets;
+      }
       if (basket.some(prod => prod.id === product.id)) {
         const index = basket.findIndex(prod => prod.id === product.id);
         basket[index].count += product.count;
