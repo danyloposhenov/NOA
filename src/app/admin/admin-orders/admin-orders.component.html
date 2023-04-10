@@ -1,0 +1,38 @@
+
+<div class="history">
+  <table class="history-table">
+    <thead>
+      <tr>
+        <td>№ замовлення</td>
+        <td>Дата та час</td>
+        <td>Адреса</td>
+        <td>Продукція</td>
+        <td>Сума</td>
+        <td>Статус</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders; index as i" >
+        <td> {{ order.id }} </td>
+        <td> {{ order.date }} </td>
+        <td>
+          м. {{ order.userData['city']  }},
+          вул. {{ order.userData['street'] }},
+          б. {{ order.userData['building'] }},
+          кв. {{ order.userData['apartment'] }}
+        </td>
+        <td>
+          <div *ngFor="let product of order.userBasket">
+            № Продукту: {{ product.id}}
+            <br>
+            Кіл-сть: {{ product.count }}
+          </div>
+        </td>
+        <td> {{ order.total }} грн</td>
+        <td [style]="order['status'] ? 'color: green' : 'color: red'"> {{ order['status'] ? 'Виконано' : 'Не виконано' }} </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="title">
+    <h2>Привіт!</h2>
+    <h2><span>Обери спосіб отримання замовлення</span></h2>
+  </div>
+  <div class="delivery">
+    <a class="delivery-link" (click)="setDelivery('courier')">
+      <div class="delivery-link-info">
+        <img src="https://firebasestorage.googleapis.com/v0/b/noa-delivery.appspot.com/o/static%20image%2Fdelivery_popup_one.svg?alt=media&token=32de9cbf-1077-49bb-b4ac-24aef75ef6a3" alt="courier">
+        <p>Доставка кур’єром</p>
+      </div>
+    </a>
+    <span>або</span>
+    <a class="delivery-link" (click)="setDelivery('selfDelivery')">
+      <div class="delivery-link-info">
+        <img src="https://firebasestorage.googleapis.com/v0/b/noa-delivery.appspot.com/o/static%20image%2Fdelivery_popup_two.svg?alt=media&token=f95059c2-1813-4b9d-bafd-a35bd7c10335" alt="selfdelivery">
+        <p>Самовивіз</p>
+      </div>
+    </a>
+  </div>
+</div>

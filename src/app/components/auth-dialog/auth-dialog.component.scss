@@ -1,0 +1,159 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
+@import "../../shared/styles/fonts";
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 60px 70px 70px;
+  color: black;
+  h2 {
+    @include title(0 0 20px, 34px, 700, auto);
+    text-align: center;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  a {
+    font-weight: 700;
+    cursor: pointer;
+  }
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border: 2px solid $secondColor;
+  border-radius: 50px;
+  background-color: $secondColor;
+  cursor: pointer;
+  .blue-close {
+    display: none;
+  }
+  &:hover {
+    background-color: white;
+    .white-close {
+      display: none;
+    }
+    .blue-close {
+      display: block;
+    }
+  }
+  img {
+    width: 75%;
+    height: 75%;
+  }
+}
+
+.box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  &-input {
+    width: 100%;
+    &-half {
+      width: 48%;
+    }
+  }
+  &-link {
+    position: relative;
+    height: 20px;
+    &-password {
+      position: relative;
+      font-weight: 500;
+      color: $secondColor;
+      &::before {
+        content: '';
+        position: absolute;
+        left: auto;
+        right: 0;
+        bottom: -3px;
+        width: 0;
+        height: 2px;
+        background-color: $secondColor;
+        transition: all 0.3s;
+      }
+      &:hover::before {
+        right: auto;
+        left: 0;
+        width: 100%;
+      }
+    }
+    &-register {
+      position: relative;
+      color: $thirdColor;
+      font-weight: 500;
+      &::before {
+        content: '';
+        position: absolute;
+        left: auto;
+        right: 0;
+        bottom: -3px;
+        width: 0;
+        height: 2px;
+        background-color: $thirdColor;
+        transition: all 0.3s;
+      }
+      &:hover::before {
+        right: auto;
+        left: 0;
+        width: 100%;
+      }
+    }
+    &-logup {
+      margin-left: 10px;
+    }
+  }
+}
+
+#btn, #btn-reg {
+  height: 60px;
+  width: 100%;
+  margin-bottom: 25px;
+  background-color: $secondColor;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+@media all and (max-width: 768px) {
+  .container {
+    padding: 30px;
+    .close {
+      width: 30px;
+      height: 30px;
+    }
+    h2 {
+      font-size: 28px;
+    }
+  }
+  .box {
+    flex-wrap: wrap;
+  }
+  #btn {
+    height: 40px;
+  }
+}
+
+@media all and (max-width: 510px) {
+  .container {
+    padding: 20px;
+    h2 {
+      font-size: 24px;
+    }
+    .close {
+      width: 27px;
+      height: 27px;
+    }
+  }
+}

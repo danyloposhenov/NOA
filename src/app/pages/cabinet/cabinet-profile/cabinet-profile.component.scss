@@ -1,0 +1,173 @@
+@import "../../../../app/shared/styles/variables";
+@import "../../../../app/shared/styles/mixins";
+
+form {
+  width: 50%;
+  margin: 0 auto;
+  p {
+    font-size: 20px;
+  }
+  input {
+    font-size: 16px;
+  }
+}
+
+.title {
+  @include title (0 0 20px, 20px, 500, 1.3em);
+  span {
+    position: relative;
+    top: -2px;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    padding-top: 1px;
+    border-radius: 6px;
+    background-color: $secondColor;
+    font-size: 15px;
+    font-weight: 500;
+    color: $mainColor;
+    text-align: center;
+  }
+}
+
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    p {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 5px;
+      background-color: $mainColor;
+      font-weight: 700;
+      color: $secondColor;
+    }
+  }
+  &-box {
+    flex: 0 0 50%;
+    max-width: 50%;
+    &:nth-child(1) {
+      padding-right: 10px;
+    }
+    &:nth-child(2) {
+      padding-left: 10px;
+    }
+  }
+  &-address {
+    padding: 0 10px;
+    max-width: 50%;
+    margin: 5px 0;
+    span {
+      display: inline-block;
+      padding: 5px;
+      border-bottom: 1px solid lightgray;
+      font-weight: 600;
+    }
+  }
+}
+
+.address {
+  width: 80%;
+}
+
+.cabinet-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &__btn {
+    &.add {
+      color: $secondColor;
+      background: $mainColor;
+    }
+    &.save, &.logout {
+      color: $mainColor;
+      background: $secondColor;
+    }
+    &.logout {
+      margin: 20px 0px;
+    }
+    &:active {
+      transform: translateY(3px);
+    }
+  }
+}
+
+@media all and (max-width: 1200px) {
+  form {
+    width: 80%;
+  }
+}
+
+@media all and (max-width: 991px) {
+  form {
+    width: 100%;
+  }
+  .address {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 768px) {
+  form {
+    p {
+      font-size: 16px;
+    }
+    input {
+      font-size: 14px;
+    }
+  }
+  .profile {
+    &-box, &-address {
+      max-width: 100%;
+      flex: 0 1 100%;
+      padding: 0;
+      margin: 0;
+      &:nth-child(1) {
+        padding-right: 0px;
+      }
+      &:nth-child(2) {
+        padding-left: 0px;
+      }
+    }
+    &-input {
+      height: 35px;
+    }
+  }
+}
+
+@media all and (max-width: 510px) {
+  .menu {
+      margin-top: 30px
+  }
+  .menu-list-item {
+    a {
+      padding: 7px 12px;
+      font-size: 12px;
+    }
+  }
+  .products-item-controls__order {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  .cabinet-buttons {
+    width: 100%;
+    &__btn {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 13px;
+      &:first-child {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+
+
+
+

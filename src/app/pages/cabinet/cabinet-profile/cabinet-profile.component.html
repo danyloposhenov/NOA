@@ -1,0 +1,56 @@
+<form [formGroup]="userDataForm">
+  <div class="profile">
+    <h3 class="profile-title title"><span>1</span>Особисті дані</h3>
+    <div class="profile-row">
+      <div class="profile-box">
+        <input type="text" class="profile-input input" placeholder="*Ваше ім'я" formControlName="firstName">
+      </div>
+      <div class="profile-box">
+        <input type="text" class="profile-input input" placeholder="*Ваше прізвище" formControlName="lastName">
+      </div>
+    </div>
+    <input type="text" class="profile-input input" placeholder="*Ваше номер телефону" formControlName="phoneNumber">
+    <input type="text" class="profile-input input" placeholder="*Ваш емейл" formControlName="email">
+  </div>
+  <div class="address">
+    <h3 class="address-title title"><span>2</span>Адреси</h3>
+   <ul>
+     <li class="profile-row" *ngFor="let address of myAddress; index as i">
+       <p> {{ i + 1 }} АДРЕСА</p>
+       <div class="profile-address">
+         <span>Місто</span>
+         <input class="profile-input input " type="text" placeholder="*Місто" [value]="address.city">
+       </div>
+       <div class="profile-address">
+         <span>Вулиця</span>
+         <input class="profile-input input " type="text" placeholder="*Вулиця" [value]="address.street">
+       </div>
+       <div class="profile-address">
+         <span>Будинок</span>
+         <input class="profile-input input" type="text" placeholder="*№ будинку" [value]="address.building">
+       </div>
+       <div class="profile-address">
+         <span>Під'їзд</span>
+         <input class="profile-input input" type="text" placeholder="*Під'їзд" [value]="address.entrance">
+       </div>
+       <div class="profile-address">
+         <span>Квартира</span>
+         <input class="profile-input input" type="text" placeholder="*Квартира" [value]="address.apartment">
+       </div>
+       <div class="profile-address">
+         <span>Поверх</span>
+         <input class="profile-input input" type="text" placeholder="*Поверх" [value]="address.floor">
+       </div>
+       <div class="profile-address">
+         <span>Домофон</span>
+         <input class="profile-input input" type="text" placeholder="*Домофон" [value]="address.intercom">
+       </div>
+     </li>
+   </ul>
+  </div>
+  <div class="cabinet-buttons">
+    <button class="cabinet-buttons__btn add button" type="button" (click)="openAddressDialog()">Додати адресу</button>
+    <button class="cabinet-buttons__btn save button" [disabled]="userDataForm.invalid" (click)="changeUserData()">Зберегти зміни</button>
+  </div>
+  <button class="cabinet-buttons__btn logout button" type="submit" (click)="logOut()">Вихід</button>
+</form>

@@ -1,0 +1,33 @@
+@import "../../../app/shared/styles/variables";
+@import "../../../app/shared/styles/mixins";
+
+.form {
+  @include container(flex, column, 300px, 40px auto, 20px);
+  row-gap: 30px;
+  &-input {
+    @include container(flex, column, 100%, 0, 0);
+    row-gap: 10px;
+    label {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    input {
+      width: 100%;
+      height: 30px;
+      padding-left: 10px;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+      background-color: $mainColor;
+    }
+  }
+  &-btn {
+    width: 100%;
+    height: 30px;
+    // outline: none;
+    // border: none;
+    border-radius: 5px;
+    background-color: $secondColor;
+    color: $mainColor;
+    cursor: pointer;
+  }
+}
