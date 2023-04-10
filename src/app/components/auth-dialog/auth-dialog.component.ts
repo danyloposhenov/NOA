@@ -16,13 +16,11 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 })
 export class AuthDialogComponent {
 
-  public closeImage = false;
   public authForm!: FormGroup;
   public registerForm!: FormGroup;
   public isLogin = true;
   public checkPassword = false;
   private registerData!: IRegister;
-
 
   constructor (
     private fb: FormBuilder,
@@ -62,6 +60,7 @@ export class AuthDialogComponent {
     if (email !== 'admin@gmail.com') {
       this.login(email, password).then(() => {
         this.toastr.success('User logined successfully');
+        this.authForm.reset();
       }).catch(e => {
         this.toastr.error(e.message);
       })
@@ -70,12 +69,15 @@ export class AuthDialogComponent {
       this.authForm.reset();
       this.dialogRef.close();
     }
+    console.log('bad')
   }
 
   async login(email: string, password: string): Promise<void> {
     const credential = await signInWithEmailAndPassword(this.auth, email, password);
+    console.log(credential.user);
     docData(doc(this.afs, 'users', credential.user.uid)).subscribe(user => {
       const currentUser = { ...user, uid: credential.user.uid };
+      console.log(currentUser);
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
       if (user && user['role'] === ROLE.USER) {
         this.router.navigate(['/cabinet'])
@@ -100,7 +102,7 @@ export class AuthDialogComponent {
     })
   }
 
-  async emailSignUp(email: string, password: string): Promise<any> {
+  async emailSignUp(email: string, password: string): Promise<void> {
     const credential = await createUserWithEmailAndPassword(this.auth, email, password);
     const user = {
       email: credential.user.email,

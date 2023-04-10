@@ -5,7 +5,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AddressComponent } from 'src/app/components/address/address.component';
-import { IRegister } from 'src/app/shared/interfaces/account/account.interface';
 import { IUser } from 'src/app/shared/interfaces/account/user.interface';
 import { IAddress } from 'src/app/shared/interfaces/address/address.interface';
 import { AccountService } from 'src/app/shared/services/account/account.service';
@@ -80,10 +79,7 @@ export class CabinetProfileComponent {
     if(localStorage.getItem('currentUser')) {
       let currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
       let currentID = currentUser['uid'];
-      this.orderService.getOrdersForUser(currentID).subscribe(data => {
-        let user = data as IRegister;
-        this.myAddress = user['address'] as IAddress[];
-      })
+      this.myAddress = currentUser['address']
     }
   }
 
@@ -97,6 +93,14 @@ export class CabinetProfileComponent {
 
   logOut(): void {
     this.router.navigate(['/']);
+    this.userDataForm.reset();
+    this.currentUser = {
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      email: ''
+    };
+    this.myAddress = [];
     localStorage.removeItem('currentUser');
     localStorage.removeItem('favoritesCurrentUser');
     this.accountService.isUserLogin$.next(true);

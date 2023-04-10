@@ -6,7 +6,7 @@
   </div>
   <h2>{{ isLogin ? 'Вхід в кабінет' : 'Зареєструватись' }}</h2>
   <ng-container *ngIf="isLogin">
-    <form [formGroup]="authForm">
+    <form [formGroup]="authForm" (submit)="loginUser()">
       <div class="box">
         <mat-form-field appearance="outline" id="email" class="box-input">
           <mat-label>Ваш email</mat-label>
@@ -19,7 +19,7 @@
           <input matInput type="password" formControlName="password">
         </mat-form-field>
       </div>
-      <button mat-raised-button color="primary" id="btn" type="button" (click)="loginUser()" mat-dialog-close>
+      <button mat-raised-button color="primary" type="submit" mat-dialog-close id="btn">
         Увійти в кабінет
       </button>
       <div class="box">
@@ -29,7 +29,7 @@
     </form>
   </ng-container>
   <ng-container *ngIf="!isLogin">
-    <form [formGroup]="registerForm">
+    <form [formGroup]="registerForm" (submit)="registerUser()">
       <div class="box">
         <mat-form-field appearance="outline" class="box-input-half">
           <mat-label>Ваше ім'я </mat-label>
@@ -64,7 +64,7 @@
             required</mat-error>
         </mat-form-field>
       </div>
-      <button mat-raised-button color="primary" id="btn" type="button" (click)="registerUser()"
+      <button mat-raised-button color="primary" id="btn-reg" type="submit"
         mat-dialog-close>Зареєструватись</button>
       <p>
         <span>Вже зареєстровані?</span>

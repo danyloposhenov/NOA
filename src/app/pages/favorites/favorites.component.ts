@@ -62,8 +62,8 @@ export class FavoritesComponent {
 
   deleteFavorite(product: IProductResponse): void {
     let prod: Array<IProductResponse> = JSON.parse(localStorage.getItem('favorites') as string);
-    const index = prod.findIndex(prod => prod.id === product.id);
-    prod = prod.filter(item => item !== prod[index]);
+    const index = prod.findIndex(prod => prod.id == product.id);
+    prod = prod.filter(item => item != prod[index]);
     localStorage.setItem('favorites', JSON.stringify(prod));
     this.LoadProducts();
   }

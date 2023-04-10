@@ -6,6 +6,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { RouterTestingModule } from '@angular/router/testing';
+import {IProductResponse} from "../../../shared/interfaces/product/product.interface";
 
 xdescribe('ProductInfoComponent', () => {
   let component: ProductInfoComponent;
@@ -32,4 +33,6 @@ xdescribe('ProductInfoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });

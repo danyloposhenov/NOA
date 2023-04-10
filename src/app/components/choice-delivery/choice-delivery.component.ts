@@ -10,7 +10,7 @@ import { DeliveryService } from 'src/app/shared/services/delivery/delivery.servi
 export class ChoiceDeliveryComponent {
 
   constructor(
-    private dialogRef: MatDialogRef<ChoiceDeliveryComponent>,
+    public dialogRef: MatDialogRef<ChoiceDeliveryComponent>,
     public deliveryService: DeliveryService
   ) { }
 

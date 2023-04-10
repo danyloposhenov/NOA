@@ -38,7 +38,7 @@ export class AddressComponent {
       let currentID = currentUser['uid'];
       currentUser['address'].push(this.addressForm.value);
       localStorage.setItem('currentUser', currentUser);
-      this.orderService.updateUserOrders(currentUser, currentID).then(r => console.log('address added'));
+      this.orderService.updateUserOrders(currentUser, currentID).then(data => console.log('address added'));
     }
   }
 

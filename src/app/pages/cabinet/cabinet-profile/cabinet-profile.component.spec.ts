@@ -10,7 +10,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrService } from 'ngx-toastr';
-import { ReactiveFormsModule } from '@angular/forms';
+import {ReactiveFormsModule, Validators} from '@angular/forms';
 
 describe('CabinetProfileComponent', () => {
   let component: CabinetProfileComponent;
@@ -44,4 +44,6 @@ describe('CabinetProfileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });

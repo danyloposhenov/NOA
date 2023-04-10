@@ -134,6 +134,7 @@
       top: 47%;
       display: block;
       transform: translate(-47%,-47%);
+      vertical-align: auto;
     }
     .feedback {
       display: inline-block;
@@ -472,6 +473,16 @@
       }
     }
     &-right {
+      img {
+        position: absolute;
+        left: 47%;
+        top: 47%;
+        display: block;
+        transform: translate(-47%,-47%);
+        vertical-align: auto;
+        width: 20px;
+        height: 20px;
+      }
       .favorites, .account {
         margin-right: 10px;
       }

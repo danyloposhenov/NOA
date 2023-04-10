@@ -67,11 +67,13 @@
       }
       .image {
         position: relative;
+        z-index: 2;
         width: 500px;
         &-culinasia {
           position: absolute;
           top: 10px;
           left: 10px;
+          z-index: 3;
           padding: 8px 10px;
           border-radius: 3px;
           background-color: #ff6400;
@@ -85,6 +87,7 @@
           position: absolute;
           top: 10px;
           right: 10px;
+          z-index: 3;
           width: 23px;
           height: 20px;
           button {

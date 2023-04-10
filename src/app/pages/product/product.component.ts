@@ -76,11 +76,15 @@ export class ProductComponent {
   choiceCulinasia(): void {
     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
     this.isCulinasia = !this.isCulinasia;
-    if (this.isCulinasia) {
-      this.userProducts = this.userProducts.filter(prod => prod["extraPath"]);
+    if (Array.isArray(this.userProducts)) {
+      if (this.isCulinasia ) {
+        this.userProducts = this.userProducts.filter(prod => prod["extraPath"]);
+      } else {
+        this.LoadProducts();
+        this.userProducts = this.userProducts.filter(prod => prod["category"].path == categoryName)
+      }
     } else {
-      this.LoadProducts();
-      this.userProducts = this.userProducts.filter(prod => prod["category"].path == categoryName)
+       console.log('error')
     }
   }
 

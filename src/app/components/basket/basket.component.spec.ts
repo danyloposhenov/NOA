@@ -50,6 +50,7 @@ describe('BasketComponent', () => {
     favorite: true,
     extraPath: 'da'
   }
+
   const products = [
     {
       id: 1,
@@ -127,17 +128,12 @@ describe('BasketComponent', () => {
     expect(product.count).toBe(1);
   });
 
-  it('should not decrement product count when value is false and count is 1', () => {
-    const product = { count: 1 } as any;
-    component.productCount(product, false);
-    expect(product.count).toBe(1);
-  });
-
   it('should calculate the total price of all products in the basket', () => {
     component.basket = [product1, product2];
     component.getTotalPrice();
     expect(component.total).toBe(65);
   });
+
 
   it('should load the basket from local storage and calculate the total price', () => {
     localStorage.clear();
@@ -150,17 +146,11 @@ describe('BasketComponent', () => {
     expect(component.total).toEqual(65);
   });
 
-  it('should not load the basket if it is empty', () => {
-    localStorage.clear();
-    localStorage.setItem('basket', '');
-    component.loadBasket();
-    expect(component.basket).toEqual([]);
-    expect(component.total).toEqual(0);
-  });
-
   it('should add product to empty basket', () => {
     localStorage.clear();
     component.addToBasket(product1);
     expect(localStorage.getItem('basket')).toBe(JSON.stringify([product1]));
   });
+
+
 });

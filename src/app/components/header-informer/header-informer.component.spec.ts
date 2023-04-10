@@ -27,4 +27,16 @@ describe('HeaderInformerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set delivery to "Доставка кур\'єром" if choice is "courier"', () => {
+    localStorage.setItem('choiceDelivery', 'courier');
+    component.unloadChoice();
+    expect(component.delivery).toEqual('Доставка кур\'єром');
+  });
+
+  it('should set delivery to "Самовивіз" if choice is not "courier"', () => {
+    localStorage.setItem('choiceDelivery', 'some_other_value');
+    component.unloadChoice();
+    expect(component.delivery).toEqual('Самовивіз');
+  });
 });

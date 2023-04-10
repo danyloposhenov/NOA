@@ -9,7 +9,6 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 describe('CategoryService', () => {
   let service: CategoryService;
 
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports:[
@@ -17,7 +16,7 @@ describe('CategoryService', () => {
         provideAuth(() => getAuth()),
         provideFirestore(() => getFirestore()),
         provideStorage(() => getStorage()),
-      ]
+      ],
     });
     service = TestBed.inject(CategoryService);
   });
@@ -25,4 +24,5 @@ describe('CategoryService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
 });
